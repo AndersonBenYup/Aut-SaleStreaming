@@ -1,0 +1,15 @@
+{
+  "businessName": "Streaming Juan",
+  "panelName": "Juan Streaming CRM",
+  "primaryColor": "#e50914",
+  "contactWhatsapp": "+51 987 654 321",
+  "country": "PE",
+  "timezone": "America/Lima",
+  "currency": "S/",
+  "logo": "logo.png",
+  "vendor": {
+    "name": "Tu Marca de Software",
+    "whatsapp": "+51 999 999 999",
+    "email": "licencias@tumarca.pe"
+  }
+}

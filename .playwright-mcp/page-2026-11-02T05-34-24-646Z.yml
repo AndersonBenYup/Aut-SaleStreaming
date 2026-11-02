@@ -1,0 +1,112 @@
+- generic [ref=f10e3]:
+  - link "Saltar al contenido" [ref=f10e4] [cursor=pointer]:
+    - /url: "#contenido"
+  - banner [ref=f10e5]:
+    - navigation "Principal" [ref=f10e7]:
+      - link "LokiStream" [ref=f10e8] [cursor=pointer]:
+        - /url: /
+      - list [ref=f10e12]:
+        - listitem [ref=f10e13]:
+          - link "Catálogo" [ref=f10e14] [cursor=pointer]:
+            - /url: /#catalogo
+        - listitem [ref=f10e15]:
+          - link "Planes" [ref=f10e16] [cursor=pointer]:
+            - /url: /planes
+        - listitem [ref=f10e17]:
+          - link "Preguntas" [ref=f10e18] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=f10e19]:
+          - link "Contacto" [ref=f10e20] [cursor=pointer]:
+            - /url: /contacto
+      - button "Abrir carrito, 0 perfiles" [ref=f10e22]
+  - main [ref=f10e27]:
+    - generic [ref=f10e28]:
+      - navigation "Ruta" [ref=f10e31]:
+        - link "Inicio" [ref=f10e32] [cursor=pointer]:
+          - /url: /
+        - text: /
+        - link "Catálogo" [ref=f10e33] [cursor=pointer]:
+          - /url: /#catalogo
+        - text: /Spotify Premium
+      - generic [ref=f10e34]:
+        - generic [ref=f10e35]:
+          - heading "Spotify Premium" [level=1] [ref=f10e38]
+          - paragraph [ref=f10e39]: Música y podcasts sin anuncios, descargas offline y saltos ilimitados en tu propia cuenta.
+          - list [ref=f10e40]:
+            - listitem [ref=f10e41]: Sin anuncios
+            - listitem [ref=f10e44]: Descargas offline
+            - listitem [ref=f10e47]: Saltos ilimitados
+            - listitem [ref=f10e50]: Cuenta individual
+        - generic [ref=f10e54]:
+          - group "Elige tu plan" [ref=f10e55]:
+            - generic [ref=f10e57]:
+              - generic [ref=f10e58] [cursor=pointer]:
+                - generic [ref=f10e59]:
+                  - radio "1 mes S/ 13.00" [checked] [ref=f10e60]
+                  - generic [ref=f10e61]: 1 mes
+                - generic [ref=f10e63]: S/ 13.00
+              - generic [ref=f10e64] [cursor=pointer]:
+                - generic [ref=f10e65]:
+                  - radio "3 meses S/ 12.00 al mes S/ 36.00" [ref=f10e66]
+                  - generic [ref=f10e67]:
+                    - generic [ref=f10e68]: 3 meses
+                    - generic [ref=f10e69]: S/ 12.00 al mes
+                - generic [ref=f10e70]: S/ 36.00
+          - generic [ref=f10e71]:
+            - generic [ref=f10e72]: Cantidad de perfiles
+            - group "Cantidad de perfiles" [ref=f10e73]:
+              - button "Quitar un perfil" [disabled] [ref=f10e74]
+              - status [ref=f10e76]: "1"
+              - button "Agregar un perfil" [ref=f10e77]
+          - generic [ref=f10e80]:
+            - generic [ref=f10e81]: 1 perfil · 1 mes
+            - generic [ref=f10e82]: S/ 13.00
+          - generic [ref=f10e83]:
+            - link "Comprar ahora" [ref=f10e84] [cursor=pointer]:
+              - /url: https://wa.me/51999999999?text=Hola%2C%20quiero%20hacer%20este%20pedido%3A%0A%E2%80%A2%20Spotify%20Premium%20%E2%80%93%201%20perfil%20%C3%97%201%20mes%20%E2%80%93%20S%2F%2013.00%0ATotal%3A%20S%2F%2013.00%0A%C2%BFC%C3%B3mo%20realizo%20el%20pago%3F
+            - button "Agregar al carrito" [ref=f10e87]
+          - list [ref=f10e92]:
+            - listitem [ref=f10e93]: Entrega en minutos
+            - listitem [ref=f10e96]: Garantía total
+            - listitem [ref=f10e100]: Soporte 24/7
+    - generic [ref=f10e104]:
+      - heading "También te puede interesar" [level=2] [ref=f10e105]
+      - link [ref=f10e107] [cursor=pointer]:
+        - /url: /plataforma/youtube-premium
+        - heading "YouTube Premium" [level=3] [ref=f10e112]
+        - paragraph [ref=f10e113]: Música
+        - generic [ref=f10e115]:
+          - paragraph [ref=f10e116]: S/ 14.00
+          - paragraph [ref=f10e117]: por perfil · mensual · desde S/ 13.00/mes
+  - contentinfo [ref=f10e121]:
+    - generic [ref=f10e122]:
+      - paragraph [ref=f10e123]: LokiStream · streaming por WhatsApp desde Trujillo, Perú
+      - list [ref=f10e124]:
+        - listitem [ref=f10e125]:
+          - link "Planes" [ref=f10e126] [cursor=pointer]:
+            - /url: /planes
+        - listitem [ref=f10e127]:
+          - link "Preguntas" [ref=f10e128] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=f10e129]:
+          - link "Contacto" [ref=f10e130] [cursor=pointer]:
+            - /url: /contacto
+        - listitem [ref=f10e131]:
+          - link "WhatsApp" [ref=f10e132] [cursor=pointer]:
+            - /url: https://wa.me/51999999999?text=Hola
+      - paragraph [ref=f10e133]:
+        - text: "© 2026 · Las marcas y logos pertenecen a sus dueños · Fotos: Unsplash y"
+        - link "madiko83, CC BY 2.0" [ref=f10e134] [cursor=pointer]:
+          - /url: https://commons.wikimedia.org/wiki/File:Trujillo-Peru2.jpg
+  - link "Escríbenos por WhatsApp" [ref=f10e135] [cursor=pointer]:
+    - /url: https://wa.me/51999999999?text=Hola%2C%20tengo%20una%20consulta.
+  - dialog [aria-hidden]:
+    - banner:
+      - heading [level=2]: Mi carrito
+      - button
+    - generic:
+      - paragraph: Tu carrito está vacío
+      - paragraph: Elige una plataforma y la cantidad de perfiles que necesitas.
+      - link:
+        - /url: /#catalogo
+        - text: Ver catálogo

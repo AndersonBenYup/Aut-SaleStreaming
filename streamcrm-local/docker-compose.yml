@@ -1,0 +1,21 @@
+# Para un VPS:  docker compose up -d --build
+# El panel queda solo en 127.0.0.1:3000 del servidor (entra por túnel SSH o un proxy con HTTPS).
+# Webhook de Retell: activa el túnel con  CLOUDFLARE_TUNNEL_TOKEN=... docker compose --profile tunel up -d
+services:
+  streamcrm:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      TZ: America/Lima
+    volumes:
+      - ./data:/app/data
+      - ./backups:/app/backups
+
+  cloudflared:
+    image: cloudflare/cloudflared:2024.12.2
+    profiles: ["tunel"]
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on: [streamcrm]

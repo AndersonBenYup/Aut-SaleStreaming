@@ -1,0 +1,127 @@
+- generic [ref=f12e3]:
+  - link "Saltar al contenido" [ref=f12e4] [cursor=pointer]:
+    - /url: "#contenido"
+  - banner [ref=f12e5]:
+    - navigation "Principal" [ref=f12e7]:
+      - link "LokiStream" [ref=f12e8] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f12e12]:
+        - button "Abrir carrito, 0 perfiles" [ref=f12e13]
+        - button "Abrir menú" [ref=f12e18]
+  - main [ref=f12e21]:
+    - generic [ref=f12e22]:
+      - generic [ref=f12e24]:
+        - navigation "Ruta" [ref=f12e25]:
+          - link "Inicio" [ref=f12e26] [cursor=pointer]:
+            - /url: /
+          - text: /
+          - link "Catálogo" [ref=f12e27] [cursor=pointer]:
+            - /url: /#catalogo
+          - text: /Disney+
+        - img "Disney+" [ref=f12e29]
+      - generic [ref=f12e30]:
+        - generic [ref=f12e31]:
+          - heading "Disney+" [level=1] [ref=f12e32]
+          - paragraph [ref=f12e33]: Disney, Pixar, Marvel, Star Wars y National Geographic en un solo lugar. Incluye contenido Star.
+          - list [ref=f12e34]:
+            - listitem [ref=f12e35]: Marvel, Pixar y Star Wars
+            - listitem [ref=f12e38]: Calidad Full HD / 4K
+            - listitem [ref=f12e41]: Perfil personal
+            - listitem [ref=f12e44]: Garantía todo el periodo
+        - generic [ref=f12e48]:
+          - group "Elige tu plan" [ref=f12e49]:
+            - generic [ref=f12e51]:
+              - generic [ref=f12e52] [cursor=pointer]:
+                - generic [ref=f12e53]:
+                  - radio "1 mes S/ 12.00" [checked] [ref=f12e54]
+                  - generic [ref=f12e55]: 1 mes
+                - generic [ref=f12e57]: S/ 12.00
+              - generic [ref=f12e58] [cursor=pointer]:
+                - generic [ref=f12e59]:
+                  - radio "3 meses S/ 11.00 al mes S/ 33.00" [ref=f12e60]
+                  - generic [ref=f12e61]:
+                    - generic [ref=f12e62]: 3 meses
+                    - generic [ref=f12e63]: S/ 11.00 al mes
+                - generic [ref=f12e64]: S/ 33.00
+          - generic [ref=f12e65]:
+            - generic [ref=f12e66]: Cantidad de perfiles
+            - group "Cantidad de perfiles" [ref=f12e67]:
+              - button "Quitar un perfil" [disabled] [ref=f12e68]
+              - status [ref=f12e70]: "1"
+              - button "Agregar un perfil" [ref=f12e71]
+          - generic [ref=f12e74]:
+            - generic [ref=f12e75]: 1 perfil · 1 mes
+            - generic [ref=f12e76]: S/ 12.00
+          - generic [ref=f12e77]:
+            - link "Comprar ahora" [ref=f12e78] [cursor=pointer]:
+              - /url: https://wa.me/51999999999?text=Hola%2C%20quiero%20hacer%20este%20pedido%3A%0A%E2%80%A2%20Disney%2B%20%E2%80%93%201%20perfil%20%C3%97%201%20mes%20%E2%80%93%20S%2F%2012.00%0ATotal%3A%20S%2F%2012.00%0A%C2%BFC%C3%B3mo%20realizo%20el%20pago%3F
+            - button "Agregar al carrito" [ref=f12e81]
+          - list [ref=f12e86]:
+            - listitem [ref=f12e87]: Entrega en minutos
+            - listitem [ref=f12e90]: Garantía total
+            - listitem [ref=f12e94]: Soporte 24/7
+    - generic [ref=f12e98]:
+      - heading "También te puede interesar" [level=2] [ref=f12e99]
+      - generic [ref=f12e100]:
+        - link "Más vendido Netflix Películas y series S/ 15.00 por perfil · mensual · desde S/ 13.33/mes" [ref=f12e101] [cursor=pointer]:
+          - /url: /plataforma/netflix
+          - generic [ref=f12e103]: Más vendido
+          - heading "Netflix" [level=3] [ref=f12e107]
+          - paragraph [ref=f12e108]: Películas y series
+          - generic [ref=f12e110]:
+            - paragraph [ref=f12e111]: S/ 15.00
+            - paragraph [ref=f12e112]: por perfil · mensual · desde S/ 13.33/mes
+        - link "Nuevo Max Películas y series S/ 12.00 por perfil · mensual · desde S/ 11.00/mes" [ref=f12e116] [cursor=pointer]:
+          - /url: /plataforma/max
+          - generic [ref=f12e118]: Nuevo
+          - heading "Max" [level=3] [ref=f12e122]
+          - paragraph [ref=f12e123]: Películas y series
+          - generic [ref=f12e125]:
+            - paragraph [ref=f12e126]: S/ 12.00
+            - paragraph [ref=f12e127]: por perfil · mensual · desde S/ 11.00/mes
+        - link [ref=f12e131] [cursor=pointer]:
+          - /url: /plataforma/prime-video
+          - heading "Prime Video" [level=3] [ref=f12e136]
+          - paragraph [ref=f12e137]: Películas y series
+          - generic [ref=f12e139]:
+            - paragraph [ref=f12e140]: S/ 10.00
+            - paragraph [ref=f12e141]: por perfil · mensual · desde S/ 9.00/mes
+        - link [ref=f12e145] [cursor=pointer]:
+          - /url: /plataforma/paramount-plus
+          - heading "Paramount+" [level=3] [ref=f12e150]
+          - paragraph [ref=f12e151]: Películas y series
+          - generic [ref=f12e153]:
+            - paragraph [ref=f12e154]: S/ 9.00
+            - paragraph [ref=f12e155]: por perfil · mensual · desde S/ 8.00/mes
+  - contentinfo [ref=f12e159]:
+    - generic [ref=f12e160]:
+      - paragraph [ref=f12e161]: LokiStream · streaming por WhatsApp desde Trujillo, Perú
+      - list [ref=f12e162]:
+        - listitem [ref=f12e163]:
+          - link "Planes" [ref=f12e164] [cursor=pointer]:
+            - /url: /planes
+        - listitem [ref=f12e165]:
+          - link "Preguntas" [ref=f12e166] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=f12e167]:
+          - link "Contacto" [ref=f12e168] [cursor=pointer]:
+            - /url: /contacto
+        - listitem [ref=f12e169]:
+          - link "WhatsApp" [ref=f12e170] [cursor=pointer]:
+            - /url: https://wa.me/51999999999?text=Hola
+      - paragraph [ref=f12e171]:
+        - text: "© 2026 · Las marcas y logos pertenecen a sus dueños · Fotos: Unsplash y"
+        - link "madiko83, CC BY 2.0" [ref=f12e172] [cursor=pointer]:
+          - /url: https://commons.wikimedia.org/wiki/File:Trujillo-Peru2.jpg
+  - link "Escríbenos por WhatsApp" [ref=f12e173] [cursor=pointer]:
+    - /url: https://wa.me/51999999999?text=Hola%2C%20tengo%20una%20consulta.
+  - dialog [aria-hidden]:
+    - banner:
+      - heading [level=2]: Mi carrito
+      - button
+    - generic:
+      - paragraph: Tu carrito está vacío
+      - paragraph: Elige una plataforma y la cantidad de perfiles que necesitas.
+      - link:
+        - /url: /#catalogo
+        - text: Ver catálogo

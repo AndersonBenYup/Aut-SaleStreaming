@@ -1,0 +1,443 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c74b22c2-7cc7-40de-b60f-629afc42052e",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -80,
+        -16
+      ],
+      "id": "ccb70f7e-81ed-47d0-b491-3794050497aa",
+      "name": "Webhook",
+      "webhookId": "cbbb49e9-b837-4126-9db3-32dfb96dc5c3"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LAPfqHbyFoFGg_qeaow49nza65kc2F0P6PsVdkefh2Q",
+          "mode": "list",
+          "cachedResultName": "T1_Machine",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LAPfqHbyFoFGg_qeaow49nza65kc2F0P6PsVdkefh2Q/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LAPfqHbyFoFGg_qeaow49nza65kc2F0P6PsVdkefh2Q/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "restaurantId": "={{ $json.restaurantId }}",
+            "branchId": "={{ $json.branchId }}",
+            "branchName": "={{ $json.branchName }}",
+            "tableId": "={{ $json.tableId }}",
+            "tableName": "={{ $json.tableName }}",
+            "customerName": "={{ $json.customerName }}",
+            "customerPhone": "={{ $json.customerPhone }}",
+            "customerEmail": "={{ $json.customerEmail }}",
+            "peopleCount": "={{ $json.peopleCount }}",
+            "specialRequests": "={{ $json.specialRequests }}",
+            "time": "={{ $json.time }}",
+            "status": "={{ $json.status }}",
+            "fecha_alerta": "={{ $json.fecha_alerta }}",
+            "date": "={{ $json.date }}",
+            "firebaseId": "={{ $json.firebaseId }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "restaurantId",
+              "displayName": "restaurantId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "branchId",
+              "displayName": "branchId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "branchName",
+              "displayName": "branchName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tableId",
+              "displayName": "tableId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tableName",
+              "displayName": "tableName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "customerName",
+              "displayName": "customerName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "customerPhone",
+              "displayName": "customerPhone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "customerEmail",
+              "displayName": "customerEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date",
+              "displayName": "date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "time",
+              "displayName": "time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "peopleCount",
+              "displayName": "peopleCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "specialRequests",
+              "displayName": "specialRequests",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fecha_alerta",
+              "displayName": "fecha_alerta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "firebaseId",
+              "displayName": "firebaseId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        480,
+        -48
+      ],
+      "id": "d43ae3e0-e892-477b-a11a-fb2301604956",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9oN7u2YXeNZMv3L7",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Extraemos el body donde están todos los datos de tu web\nconst payload = $input.item.json.body;\n\nif (!payload) {\n  return { error: \"No se encontró el body con los datos de la reserva\" };\n}\n\ntry {\n  // 2. Procesamos la fecha y hora para la alerta\n  const fechaCita = new Date(`${payload.date}T${payload.time}:00`);\n  \n  // 3. Restamos 1 minuto (para tu prueba de examen)\n  const tiempoAlerta = new Date(fechaCita.getTime() - 1 * 60000);\n\n  // 4. Retornamos el objeto LIMPIO con todos los campos necesarios\n  return {\n    firebaseId: payload.id, // <--- AGREGAMOS EL ID AQUÍ\n    restaurantId: payload.restaurantId,\n    branchId: payload.branchId,\n    branchName: payload.branchName,\n    tableId: payload.tableId,\n    tableName: payload.tableName,\n    customerName: payload.customerName,\n    customerPhone: payload.customerPhone,\n    customerEmail: payload.customerEmail,\n    date: payload.date,\n    time: payload.time,\n    peopleCount: payload.peopleCount,\n    specialRequests: payload.specialRequests,\n    status: payload.status,\n    // Formato de fecha limpio\n    fecha_alerta: tiempoAlerta.toISOString().split('.')[0].replace('T', ' ')\n  };\n\n} catch (e) {\n  return { error: \"Error al procesar la fecha\", detalle: e.message };\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        -224
+      ],
+      "id": "478ca0f5-4884-45b5-92c1-14b2e64f3dda",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-web-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"agent_id\": \"agent_faf668607c7f13f7540c72e76e\",\n  \"metadata\": {\n    \"firebaseId\": \"{{ $json.firebaseId }}\",\n    \"customerName\": \"{{ $json.customerName }}\",\n    \"branchName\": \"{{ $json.branchName }}\",\n    \"tableName\": \"{{ $json.tableName }}\",\n    \"customerPhone\": \"{{ $json.customerPhone }}\"\n  },\n  \"retell_llm_dynamic_variables\": {\n    \"customerName\": \"{{ $json.customerName }}\",\n    \"branchName\": \"{{ $json.branchName }}\",\n    \"time\": \"{{ $json.time }}\",\n    \"peopleCount\": \"{{ $json.peopleCount }}\",\n    \"tableName\": \"{{ $json.tableName }}\",\n    \"specialRequests\": \"{{ $json.specialRequests }}\",\n    \"customerPhone\": \"{{ $json.customerPhone }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        960,
+        -176
+      ],
+      "id": "b72c004d-8e0d-4670-b657-6f68fc97a4b4",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "s6vdCYb0CmT9PomV",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{ $json.fecha_alerta }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        688,
+        -48
+      ],
+      "id": "2ef64570-48b1-4e4a-ab9f-a6049588ae0d",
+      "name": "Wait",
+      "webhookId": "08fb2630-2b53-4b0b-96f6-0dcd857c85e4"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"access_token\": \"{{ $json.access_token }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1184,
+        -144
+      ],
+      "id": "b23d8d33-68e8-4033-a486-0e9ef0d2a492",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "elanderyours.app.n8n.cloud",
+            "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36",
+            "content-length": "483",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "es-ES,es;q=0.9",
+            "cache-control": "no-cache",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "190.42.102.124",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "PE",
+            "cf-ray": "9f30bbdd3f038bc1-EZE",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "origin": "http://localhost:4200",
+            "pragma": "no-cache",
+            "referer": "http://localhost:4200/",
+            "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"",
+            "sec-ch-ua-mobile": "?1",
+            "sec-ch-ua-platform": "\"Android\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "190.42.102.124, 198.41.230.201",
+            "x-forwarded-host": "elanderyours.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-118-799cbb99cd-nwwl7",
+            "x-is-trusted": "yes",
+            "x-real-ip": "190.42.102.124"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": "V3O8rzKcwVr7M8O0uEWt",
+            "restaurantId": "RS2",
+            "branchId": "57MXUDocFbNS4B3IZQJ4",
+            "tableId": "MPF7wPI60M9ZAgY6kxrz",
+            "customerName": "as",
+            "customerPhone": "+51656165165",
+            "customerEmail": "comprador@gmail.com",
+            "date": "2026-04-27",
+            "time": "15:58",
+            "peopleCount": 1,
+            "notes": "asa",
+            "status": "pending",
+            "createdAt": "2026-04-27T20:56:24.168Z",
+            "branchName": "Trujillo",
+            "tableName": "Mesa 10",
+            "name": "as",
+            "email": "comprador@gmail.com",
+            "phone": "+51656165165",
+            "specialRequests": "asa",
+            "acceptTerms": true
+          },
+          "webhookUrl": "https://elanderyours.app.n8n.cloud/webhook/c74b22c2-7cc7-40de-b60f-629afc42052e",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "edebf558-22fe-4439-978a-e6636acd4a2c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0e1d63e0a7701142b62e4574e274d8095132954468b2fc2af2d698ad85369dfc"
+  },
+  "id": "KghwGlOCnYJkdpks",
+  "tags": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "streamcrm-local",
+  "version": "1.0.0",
+  "releaseDate": "2026-10-30",
+  "description": "StreamCRM Local: gestión de clientes de streaming con recordatorios por llamada de IA (Retell) o WhatsApp. Un negocio por instalación.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch src/server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test --test-concurrency=1 \"test/*.test.js\"",
+    "smoke": "node --disable-warning=ExperimentalWarning scripts/smoke.js",
+    "backup": "node --disable-warning=ExperimentalWarning scripts/backup.js",
+    "update": "node --disable-warning=ExperimentalWarning scripts/update.js",
+    "tunnel": "node scripts/tunnel.js",
+    "package": "node scripts/package.js",
+    "license": "node tools/license-generator.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "luxon": "^3.7.2",
+    "retell-sdk": "^6.2.15"
+  }
+}

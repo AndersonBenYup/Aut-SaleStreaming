@@ -1,0 +1,1351 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d1d7f164-7919-466f-9e8a-1308fb0c1a2f",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -208,
+        96
+      ],
+      "id": "3ec96f7a-da81-46b2-81cf-6a79aae091af",
+      "name": "Webhook1",
+      "webhookId": "bb2386a4-dc8c-421a-9642-9b5ff8e4036b"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a351497e-b266-4eb2-93d6-d95a358bf0d7",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "call_analyzed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        16,
+        96
+      ],
+      "id": "db7bd719-38f3-40f5-9ba9-9216cc1597b8",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1LAPfqHbyFoFGg_qeaow49nza65kc2F0P6PsVdkefh2Q",
+          "mode": "list",
+          "cachedResultName": "T1_Machine",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LAPfqHbyFoFGg_qeaow49nza65kc2F0P6PsVdkefh2Q/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LAPfqHbyFoFGg_qeaow49nza65kc2F0P6PsVdkefh2Q/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "={{ $json.body.call.call_analysis.custom_analysis_data.asistencia }}",
+            "firebaseId": "={{ $json.body.call.metadata.firebaseId }}"
+          },
+          "matchingColumns": [
+            "firebaseId"
+          ],
+          "schema": [
+            {
+              "id": "restaurantId",
+              "displayName": "restaurantId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "branchId",
+              "displayName": "branchId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "branchName",
+              "displayName": "branchName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tableId",
+              "displayName": "tableId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tableName",
+              "displayName": "tableName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "customerName",
+              "displayName": "customerName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "customerPhone",
+              "displayName": "customerPhone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "customerEmail",
+              "displayName": "customerEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date",
+              "displayName": "date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "time",
+              "displayName": "time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "peopleCount",
+              "displayName": "peopleCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "specialRequests",
+              "displayName": "specialRequests",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fecha_alerta",
+              "displayName": "fecha_alerta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "firebaseId",
+              "displayName": "firebaseId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        240,
+        96
+      ],
+      "id": "e81ae401-957e-4706-ac9a-19ba086aead1",
+      "name": "Update row in sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9oN7u2YXeNZMv3L7",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "upsert",
+        "projectId": "restaurante-37332",
+        "collection": "reservations",
+        "updateKey": "firebaseId",
+        "columns": "=status"
+      },
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1.1,
+      "position": [
+        464,
+        96
+      ],
+      "id": "2a8af083-0f0a-40a3-b19c-7c44d69035b4",
+      "name": "Create or update a document",
+      "credentials": {
+        "googleApi": {
+          "id": "xvFrebs8rtYkFiqb",
+          "name": "Google Service Account account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "elanderyours.app.n8n.cloud",
+            "user-agent": "axios/1.15.2",
+            "content-length": "13207",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, br",
+            "baggage": "sentry-environment=production,sentry-public_key=f9776ac2f798b66bdadc990a2ed64f17,sentry-trace_id=350e739e41fb4a549bd731e03ab014f4,sentry-org_id=4511141371183104",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "100.20.5.228",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "US",
+            "cf-ray": "9f3145b6e9e0c54c-PDX",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "sentry-trace": "350e739e41fb4a549bd731e03ab014f4-acbbe129f0b744f1",
+            "x-forwarded-for": "100.20.5.228, 172.68.174.163",
+            "x-forwarded-host": "elanderyours.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-118-799cbb99cd-tlpg6",
+            "x-is-trusted": "yes",
+            "x-real-ip": "100.20.5.228",
+            "x-retell-signature": "v=1777329032686,d=cbb54c04e46d88a00fd3237a668d169002677380b897631988085f7bc03beed0"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "call_analyzed",
+            "call": {
+              "call_id": "call_b9eedc72c498ae73cdff033c56f",
+              "call_type": "web_call",
+              "agent_id": "agent_faf668607c7f13f7540c72e76e",
+              "agent_version": 8,
+              "agent_name": "Single-Prompt Agent",
+              "retell_llm_dynamic_variables": {
+                "customerName": "segundo intento",
+                "branchName": "Trujillo",
+                "time": "17:31",
+                "peopleCount": "1",
+                "tableName": "Mesa 11",
+                "specialRequests": "xd",
+                "customerPhone": "+51516518651"
+              },
+              "call_status": "ended",
+              "start_timestamp": 1777329002388,
+              "end_timestamp": 1777329031106,
+              "duration_ms": 28718,
+              "transcript": "Agent: Hola, ¿hablo con segundo intento? ¡Qué tal! Te saluda el asistente de Trujillo. Te llamamos \nUser: (inaudible speech)\nAgent: Lo siento, parece que no puedo escucharte con claridad.\nUser: Confirmo \nAgent:  Para mantener \nUser: mi asistencia. \nUser: Confirmo mi asistencia. \nAgent: ¡Excelente noticia, segundo intento! Ya hemos asegurado tu lugar en la Mesa 11. Además, veo aquí que nos pediste: 'xd'; ya le pasé el dato al equipo para que lo tengan listo. ¡Te esperamos pronto!\n",
+              "transcript_object": [
+                {
+                  "role": "agent",
+                  "content": "Hola, ¿hablo con segundo intento? ¡Qué tal! Te saluda el asistente de Trujillo. Te llamamos ",
+                  "words": [
+                    {
+                      "word": "Hola, ",
+                      "start": 0.287,
+                      "end": 0.682
+                    },
+                    {
+                      "word": "¿hablo ",
+                      "start": 0.682,
+                      "end": 1.03
+                    },
+                    {
+                      "word": "con ",
+                      "start": 1.03,
+                      "end": 1.193
+                    },
+                    {
+                      "word": "segundo ",
+                      "start": 1.193,
+                      "end": 1.599
+                    },
+                    {
+                      "word": "intento? ",
+                      "start": 1.599,
+                      "end": 2.505
+                    },
+                    {
+                      "word": "¡Qué ",
+                      "start": 2.550541748046875,
+                      "end": 2.725541748046875
+                    },
+                    {
+                      "word": "tal! ",
+                      "start": 2.725541748046875,
+                      "end": 3.201541748046875
+                    },
+                    {
+                      "word": "Te ",
+                      "start": 3.236125,
+                      "end": 3.387125
+                    },
+                    {
+                      "word": "saluda ",
+                      "start": 3.387125,
+                      "end": 3.712125
+                    },
+                    {
+                      "word": "el ",
+                      "start": 3.712125,
+                      "end": 3.816125
+                    },
+                    {
+                      "word": "asistente ",
+                      "start": 3.816125,
+                      "end": 4.269125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 4.269125,
+                      "end": 4.374125
+                    },
+                    {
+                      "word": "Trujillo. ",
+                      "start": 4.374125,
+                      "end": 5.198125
+                    },
+                    {
+                      "word": "Te ",
+                      "start": 5.244041748046875,
+                      "end": 5.419041748046875
+                    },
+                    {
+                      "word": "llamamos ",
+                      "start": 5.419041748046875,
+                      "end": 5.953041748046875
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 0
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "(inaudible speech)",
+                  "words": [
+                    {
+                      "word": "",
+                      "start": 7.8373127,
+                      "end": 7.8373127
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "Lo siento, parece que no puedo escucharte con claridad.",
+                  "words": [
+                    {
+                      "word": "Lo ",
+                      "start": 9.412,
+                      "end": 9.598
+                    },
+                    {
+                      "word": "siento, ",
+                      "start": 9.598,
+                      "end": 10.12
+                    },
+                    {
+                      "word": "parece ",
+                      "start": 10.12,
+                      "end": 10.399
+                    },
+                    {
+                      "word": "que ",
+                      "start": 10.399,
+                      "end": 10.503
+                    },
+                    {
+                      "word": "no ",
+                      "start": 10.503,
+                      "end": 10.631
+                    },
+                    {
+                      "word": "puedo ",
+                      "start": 10.631,
+                      "end": 10.84
+                    },
+                    {
+                      "word": "escucharte ",
+                      "start": 10.84,
+                      "end": 11.328
+                    },
+                    {
+                      "word": "con ",
+                      "start": 11.328,
+                      "end": 11.479
+                    },
+                    {
+                      "word": "claridad.",
+                      "start": 11.479,
+                      "end": 12.373
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Confirmo ",
+                  "words": [
+                    {
+                      "word": "Confirmo ",
+                      "start": 12.575,
+                      "end": 13.054998999999999
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": " Para mantener ",
+                  "words": [
+                    {
+                      "word": " Para ",
+                      "start": 12.418583251953125,
+                      "end": 12.685583251953124
+                    },
+                    {
+                      "word": "mantener ",
+                      "start": 12.685583251953124,
+                      "end": 13.185583251953124
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "mi asistencia. ",
+                  "words": [
+                    {
+                      "word": "mi ",
+                      "start": 13.054998999999999,
+                      "end": 13.214998999999999
+                    },
+                    {
+                      "word": "asistencia. ",
+                      "start": 13.214998999999999,
+                      "end": 13.535
+                    }
+                  ]
+                },
+                {
+                  "role": "user",
+                  "content": "Confirmo mi asistencia. ",
+                  "words": [
+                    {
+                      "word": "Confirmo ",
+                      "start": 13.905000000000001,
+                      "end": 14.304998999999999
+                    },
+                    {
+                      "word": "mi ",
+                      "start": 14.304998999999999,
+                      "end": 14.465
+                    },
+                    {
+                      "word": "asistencia. ",
+                      "start": 14.465,
+                      "end": 14.785
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "¡Excelente noticia, segundo intento! Ya hemos asegurado tu lugar en la Mesa 11. Además, veo aquí que nos pediste: 'xd'; ya le pasé el dato al equipo para que lo tengan listo. ¡Te esperamos pronto!",
+                  "words": [
+                    {
+                      "word": "¡Excelente ",
+                      "start": 15.976,
+                      "end": 16.58
+                    },
+                    {
+                      "word": "noticia, ",
+                      "start": 16.58,
+                      "end": 16.998
+                    },
+                    {
+                      "word": "segundo ",
+                      "start": 16.998,
+                      "end": 17.323
+                    },
+                    {
+                      "word": "intento! ",
+                      "start": 17.323,
+                      "end": 17.984
+                    },
+                    {
+                      "word": "Ya ",
+                      "start": 18.030375,
+                      "end": 18.123375
+                    },
+                    {
+                      "word": "hemos ",
+                      "start": 18.123375,
+                      "end": 18.414375
+                    },
+                    {
+                      "word": "asegurado ",
+                      "start": 18.414375,
+                      "end": 19.006375
+                    },
+                    {
+                      "word": "tu ",
+                      "start": 19.006375,
+                      "end": 19.145375
+                    },
+                    {
+                      "word": "lugar ",
+                      "start": 19.145375,
+                      "end": 19.447375
+                    },
+                    {
+                      "word": "en ",
+                      "start": 19.447375,
+                      "end": 19.528375
+                    },
+                    {
+                      "word": "la ",
+                      "start": 19.528375,
+                      "end": 19.656375
+                    },
+                    {
+                      "word": "Mesa ",
+                      "start": 19.656375,
+                      "end": 19.993375
+                    },
+                    {
+                      "word": "11. ",
+                      "start": 19.993375,
+                      "end": 20.678375
+                    },
+                    {
+                      "word": "Además, ",
+                      "start": 20.723875,
+                      "end": 21.292875
+                    },
+                    {
+                      "word": "veo ",
+                      "start": 21.292875,
+                      "end": 21.513875
+                    },
+                    {
+                      "word": "aquí ",
+                      "start": 21.513875,
+                      "end": 21.722875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 21.722875,
+                      "end": 21.850875
+                    },
+                    {
+                      "word": "nos ",
+                      "start": 21.850875,
+                      "end": 22.001875
+                    },
+                    {
+                      "word": "pediste: ",
+                      "start": 22.001875,
+                      "end": 22.453875
+                    },
+                    {
+                      "word": "'xd'; ",
+                      "start": 22.453875,
+                      "end": 23.858875
+                    },
+                    {
+                      "word": "ya ",
+                      "start": 23.858875,
+                      "end": 24.044875
+                    },
+                    {
+                      "word": "le ",
+                      "start": 24.044875,
+                      "end": 24.160875
+                    },
+                    {
+                      "word": "pasé ",
+                      "start": 24.160875,
+                      "end": 24.497875
+                    },
+                    {
+                      "word": "el ",
+                      "start": 24.497875,
+                      "end": 24.636875
+                    },
+                    {
+                      "word": "dato ",
+                      "start": 24.636875,
+                      "end": 24.961875
+                    },
+                    {
+                      "word": "al ",
+                      "start": 24.961875,
+                      "end": 25.077875
+                    },
+                    {
+                      "word": "equipo ",
+                      "start": 25.077875,
+                      "end": 25.414875
+                    },
+                    {
+                      "word": "para ",
+                      "start": 25.414875,
+                      "end": 25.623875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 25.623875,
+                      "end": 25.727875
+                    },
+                    {
+                      "word": "lo ",
+                      "start": 25.727875,
+                      "end": 25.855875
+                    },
+                    {
+                      "word": "tengan ",
+                      "start": 25.855875,
+                      "end": 26.169875
+                    },
+                    {
+                      "word": "listo. ",
+                      "start": 26.169875,
+                      "end": 26.900875
+                    },
+                    {
+                      "word": "¡Te ",
+                      "start": 26.946833251953127,
+                      "end": 27.272833251953124
+                    },
+                    {
+                      "word": "esperamos ",
+                      "start": 27.272833251953124,
+                      "end": 27.864833251953126
+                    },
+                    {
+                      "word": "pronto!",
+                      "start": 27.864833251953126,
+                      "end": 28.665833251953124
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 3
+                  }
+                }
+              ],
+              "transcript_with_tool_calls": [
+                {
+                  "role": "agent",
+                  "content": "Hola, ¿hablo con segundo intento? ¡Qué tal! Te saluda el asistente de Trujillo. Te llamamos ",
+                  "words": [
+                    {
+                      "word": "Hola, ",
+                      "start": 0.287,
+                      "end": 0.682
+                    },
+                    {
+                      "word": "¿hablo ",
+                      "start": 0.682,
+                      "end": 1.03
+                    },
+                    {
+                      "word": "con ",
+                      "start": 1.03,
+                      "end": 1.193
+                    },
+                    {
+                      "word": "segundo ",
+                      "start": 1.193,
+                      "end": 1.599
+                    },
+                    {
+                      "word": "intento? ",
+                      "start": 1.599,
+                      "end": 2.505
+                    },
+                    {
+                      "word": "¡Qué ",
+                      "start": 2.550541748046875,
+                      "end": 2.725541748046875
+                    },
+                    {
+                      "word": "tal! ",
+                      "start": 2.725541748046875,
+                      "end": 3.201541748046875
+                    },
+                    {
+                      "word": "Te ",
+                      "start": 3.236125,
+                      "end": 3.387125
+                    },
+                    {
+                      "word": "saluda ",
+                      "start": 3.387125,
+                      "end": 3.712125
+                    },
+                    {
+                      "word": "el ",
+                      "start": 3.712125,
+                      "end": 3.816125
+                    },
+                    {
+                      "word": "asistente ",
+                      "start": 3.816125,
+                      "end": 4.269125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 4.269125,
+                      "end": 4.374125
+                    },
+                    {
+                      "word": "Trujillo. ",
+                      "start": 4.374125,
+                      "end": 5.198125
+                    },
+                    {
+                      "word": "Te ",
+                      "start": 5.244041748046875,
+                      "end": 5.419041748046875
+                    },
+                    {
+                      "word": "llamamos ",
+                      "start": 5.419041748046875,
+                      "end": 5.953041748046875
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 0
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "(inaudible speech)",
+                  "words": [
+                    {
+                      "word": "",
+                      "start": 7.8373127,
+                      "end": 7.8373127
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "Lo siento, parece que no puedo escucharte con claridad.",
+                  "words": [
+                    {
+                      "word": "Lo ",
+                      "start": 9.412,
+                      "end": 9.598
+                    },
+                    {
+                      "word": "siento, ",
+                      "start": 9.598,
+                      "end": 10.12
+                    },
+                    {
+                      "word": "parece ",
+                      "start": 10.12,
+                      "end": 10.399
+                    },
+                    {
+                      "word": "que ",
+                      "start": 10.399,
+                      "end": 10.503
+                    },
+                    {
+                      "word": "no ",
+                      "start": 10.503,
+                      "end": 10.631
+                    },
+                    {
+                      "word": "puedo ",
+                      "start": 10.631,
+                      "end": 10.84
+                    },
+                    {
+                      "word": "escucharte ",
+                      "start": 10.84,
+                      "end": 11.328
+                    },
+                    {
+                      "word": "con ",
+                      "start": 11.328,
+                      "end": 11.479
+                    },
+                    {
+                      "word": "claridad.",
+                      "start": 11.479,
+                      "end": 12.373
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Confirmo ",
+                  "words": [
+                    {
+                      "word": "Confirmo ",
+                      "start": 12.575,
+                      "end": 13.054998999999999
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": " Para mantener ",
+                  "words": [
+                    {
+                      "word": " Para ",
+                      "start": 12.418583251953125,
+                      "end": 12.685583251953124
+                    },
+                    {
+                      "word": "mantener ",
+                      "start": 12.685583251953124,
+                      "end": 13.185583251953124
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "mi asistencia. ",
+                  "words": [
+                    {
+                      "word": "mi ",
+                      "start": 13.054998999999999,
+                      "end": 13.214998999999999
+                    },
+                    {
+                      "word": "asistencia. ",
+                      "start": 13.214998999999999,
+                      "end": 13.535
+                    }
+                  ]
+                },
+                {
+                  "role": "user",
+                  "content": "Confirmo mi asistencia. ",
+                  "words": [
+                    {
+                      "word": "Confirmo ",
+                      "start": 13.905000000000001,
+                      "end": 14.304998999999999
+                    },
+                    {
+                      "word": "mi ",
+                      "start": 14.304998999999999,
+                      "end": 14.465
+                    },
+                    {
+                      "word": "asistencia. ",
+                      "start": 14.465,
+                      "end": 14.785
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "¡Excelente noticia, segundo intento! Ya hemos asegurado tu lugar en la Mesa 11. Además, veo aquí que nos pediste: 'xd'; ya le pasé el dato al equipo para que lo tengan listo. ¡Te esperamos pronto!",
+                  "words": [
+                    {
+                      "word": "¡Excelente ",
+                      "start": 15.976,
+                      "end": 16.58
+                    },
+                    {
+                      "word": "noticia, ",
+                      "start": 16.58,
+                      "end": 16.998
+                    },
+                    {
+                      "word": "segundo ",
+                      "start": 16.998,
+                      "end": 17.323
+                    },
+                    {
+                      "word": "intento! ",
+                      "start": 17.323,
+                      "end": 17.984
+                    },
+                    {
+                      "word": "Ya ",
+                      "start": 18.030375,
+                      "end": 18.123375
+                    },
+                    {
+                      "word": "hemos ",
+                      "start": 18.123375,
+                      "end": 18.414375
+                    },
+                    {
+                      "word": "asegurado ",
+                      "start": 18.414375,
+                      "end": 19.006375
+                    },
+                    {
+                      "word": "tu ",
+                      "start": 19.006375,
+                      "end": 19.145375
+                    },
+                    {
+                      "word": "lugar ",
+                      "start": 19.145375,
+                      "end": 19.447375
+                    },
+                    {
+                      "word": "en ",
+                      "start": 19.447375,
+                      "end": 19.528375
+                    },
+                    {
+                      "word": "la ",
+                      "start": 19.528375,
+                      "end": 19.656375
+                    },
+                    {
+                      "word": "Mesa ",
+                      "start": 19.656375,
+                      "end": 19.993375
+                    },
+                    {
+                      "word": "11. ",
+                      "start": 19.993375,
+                      "end": 20.678375
+                    },
+                    {
+                      "word": "Además, ",
+                      "start": 20.723875,
+                      "end": 21.292875
+                    },
+                    {
+                      "word": "veo ",
+                      "start": 21.292875,
+                      "end": 21.513875
+                    },
+                    {
+                      "word": "aquí ",
+                      "start": 21.513875,
+                      "end": 21.722875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 21.722875,
+                      "end": 21.850875
+                    },
+                    {
+                      "word": "nos ",
+                      "start": 21.850875,
+                      "end": 22.001875
+                    },
+                    {
+                      "word": "pediste: ",
+                      "start": 22.001875,
+                      "end": 22.453875
+                    },
+                    {
+                      "word": "'xd'; ",
+                      "start": 22.453875,
+                      "end": 23.858875
+                    },
+                    {
+                      "word": "ya ",
+                      "start": 23.858875,
+                      "end": 24.044875
+                    },
+                    {
+                      "word": "le ",
+                      "start": 24.044875,
+                      "end": 24.160875
+                    },
+                    {
+                      "word": "pasé ",
+                      "start": 24.160875,
+                      "end": 24.497875
+                    },
+                    {
+                      "word": "el ",
+                      "start": 24.497875,
+                      "end": 24.636875
+                    },
+                    {
+                      "word": "dato ",
+                      "start": 24.636875,
+                      "end": 24.961875
+                    },
+                    {
+                      "word": "al ",
+                      "start": 24.961875,
+                      "end": 25.077875
+                    },
+                    {
+                      "word": "equipo ",
+                      "start": 25.077875,
+                      "end": 25.414875
+                    },
+                    {
+                      "word": "para ",
+                      "start": 25.414875,
+                      "end": 25.623875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 25.623875,
+                      "end": 25.727875
+                    },
+                    {
+                      "word": "lo ",
+                      "start": 25.727875,
+                      "end": 25.855875
+                    },
+                    {
+                      "word": "tengan ",
+                      "start": 25.855875,
+                      "end": 26.169875
+                    },
+                    {
+                      "word": "listo. ",
+                      "start": 26.169875,
+                      "end": 26.900875
+                    },
+                    {
+                      "word": "¡Te ",
+                      "start": 26.946833251953127,
+                      "end": 27.272833251953124
+                    },
+                    {
+                      "word": "esperamos ",
+                      "start": 27.272833251953124,
+                      "end": 27.864833251953126
+                    },
+                    {
+                      "word": "pronto!",
+                      "start": 27.864833251953126,
+                      "end": 28.665833251953124
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 3
+                  }
+                },
+                {
+                  "role": "tool_call_invocation",
+                  "tool_call_id": "d7d9a4b64216843f",
+                  "name": "end_call",
+                  "arguments": "{\"execution_message\":\"¡Excelente noticia, segundo intento! Ya hemos asegurado tu lugar en la Mesa 11. Además, veo aquí que nos pediste: 'xd'; ya le pasé el dato al equipo para que lo tengan listo. ¡Te esperamos pronto!\"}",
+                  "time_sec": 28.714,
+                  "type": "end_call"
+                }
+              ],
+              "recording_url": "https://dxc03zgurdly9.cloudfront.net/867085d1bd6407a111c98cb9fb4d9b0911591a87ce279c2b6001330d04d2007b/recording.wav",
+              "recording_multi_channel_url": "https://dxc03zgurdly9.cloudfront.net/867085d1bd6407a111c98cb9fb4d9b0911591a87ce279c2b6001330d04d2007b/recording_multichannel.wav",
+              "public_log_url": "https://dxc03zgurdly9.cloudfront.net/867085d1bd6407a111c98cb9fb4d9b0911591a87ce279c2b6001330d04d2007b/public.log",
+              "disconnection_reason": "agent_hangup",
+              "latency": {
+                "llm": {
+                  "p50": 460,
+                  "p90": 802.3999999999999,
+                  "p95": 845.2,
+                  "p99": 879.44,
+                  "min": 5,
+                  "max": 888,
+                  "num": 3,
+                  "sum": 1353,
+                  "values": [
+                    5,
+                    460,
+                    888
+                  ]
+                },
+                "e2e": {
+                  "p50": 1336.3436279296875,
+                  "p90": 1480.6185302734375,
+                  "p95": 1498.6528930664062,
+                  "p99": 1513.0803833007812,
+                  "min": 1156,
+                  "max": 1516.687255859375,
+                  "num": 2,
+                  "sum": 2672.687255859375,
+                  "values": [
+                    1516.687255859375,
+                    1156
+                  ]
+                },
+                "tts": {
+                  "p50": 217,
+                  "p90": 221,
+                  "p95": 221.5,
+                  "p99": 221.9,
+                  "min": 192,
+                  "max": 222,
+                  "num": 3,
+                  "sum": 631,
+                  "values": [
+                    222,
+                    217,
+                    192
+                  ]
+                },
+                "asr": {
+                  "p50": 21.312000000001717,
+                  "p90": 59.72481999999984,
+                  "p95": 401.72487999999856,
+                  "p99": 806.9949759999992,
+                  "min": 0,
+                  "max": 908.3125,
+                  "num": 13,
+                  "sum": 1164.1223000000027,
+                  "values": [
+                    0.00019999999949504854,
+                    0,
+                    21.312699999999495,
+                    21.3125,
+                    21.312299999999595,
+                    21.311999999999898,
+                    0,
+                    21.31170000000202,
+                    21.312000000001717,
+                    63.999799999999595,
+                    21.3117000000002,
+                    908.3125,
+                    42.62490000000071
+                  ]
+                }
+              },
+              "metadata": {
+                "branchName": "Trujillo",
+                "customerPhone": "+51516518651",
+                "firebaseId": "8G1X2VVijJjbVg0fqxsK",
+                "customerName": "segundo intento",
+                "tableName": "Mesa 11"
+              },
+              "call_cost": {
+                "product_costs": [
+                  {
+                    "product": "retell_voice_engine",
+                    "unit_price": 0.0916667,
+                    "cost": 2.6583333
+                  },
+                  {
+                    "product": "elevenlabs_tts_03_2026",
+                    "unit_price": 0.0666667,
+                    "cost": 1.9333333
+                  },
+                  {
+                    "product": "gpt_4_1",
+                    "unit_price": 0.075,
+                    "cost": 2.175
+                  },
+                  {
+                    "product": "gpt_4_1_text_testing",
+                    "unit_price": 1.5,
+                    "cost": 1.5
+                  }
+                ],
+                "total_duration_unit_price": 0.2333333,
+                "total_duration_seconds": 29,
+                "combined_cost": 8.2666666
+              },
+              "call_analysis": {
+                "call_summary": "El usuario confirmó su asistencia a la reserva y el agente aseguró su lugar en la Mesa 11, además de tomar nota de una petición especial. La llamada concluyó exitosamente con la confirmación de la reserva.",
+                "in_voicemail": false,
+                "user_sentiment": "Positive",
+                "call_successful": true,
+                "custom_analysis_data": {
+                  "asistencia": "Confirmada para Mesa 11, petición especial 'xd' registrada."
+                }
+              },
+              "data_storage_setting": "everything",
+              "opt_in_signed_url": false,
+              "llm_token_usage": {
+                "values": [
+                  1468,
+                  1499,
+                  1507
+                ],
+                "average": 1491.3333333333333,
+                "num_requests": 3
+              },
+              "tool_calls": [
+                {
+                  "tool_call_id": "d7d9a4b64216843f",
+                  "name": "end_call",
+                  "type": "end_call",
+                  "start_time_sec": 28.714
+                }
+              ],
+              "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9pbiI6dHJ1ZSwicm9vbSI6IndlYl9jYWxsX2I5ZWVkYzcyYzQ5OGFlNzNjZGZmMDMzYzU2ZiJ9LCJpc3MiOiJBUElVTXg5OFUyR2MyanIiLCJleHAiOjE3NzczMjk2MDEsIm5iZiI6MTc3NzMyOTAwMSwic3ViIjoiY2xpZW50In0.XLvLmmho7D5g7ZqXI5zpG8J0RtVnkovVUAlPQKCPVko"
+            },
+            "event_timestamp": 1777329032686
+          },
+          "webhookUrl": "https://elanderyours.app.n8n.cloud/webhook/d1d7f164-7919-466f-9e8a-1308fb0c1a2f",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Create or update a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "42d4de1a-9d74-4520-989d-7b297421a895",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0e1d63e0a7701142b62e4574e274d8095132954468b2fc2af2d698ad85369dfc"
+  },
+  "id": "Gn2NqXqZreyXSKoo",
+  "tags": []
+}

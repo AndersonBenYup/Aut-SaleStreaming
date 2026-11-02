@@ -1,0 +1,114 @@
+- generic [ref=f11e3]:
+  - link "Saltar al contenido" [ref=f11e4] [cursor=pointer]:
+    - /url: "#contenido"
+  - banner [ref=f11e5]:
+    - navigation "Principal" [ref=f11e7]:
+      - link "LokiStream" [ref=f11e8] [cursor=pointer]:
+        - /url: /
+      - list [ref=f11e12]:
+        - listitem [ref=f11e13]:
+          - link "Catálogo" [ref=f11e14] [cursor=pointer]:
+            - /url: /#catalogo
+        - listitem [ref=f11e15]:
+          - link "Planes" [ref=f11e16] [cursor=pointer]:
+            - /url: /planes
+        - listitem [ref=f11e17]:
+          - link "Preguntas" [ref=f11e18] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=f11e19]:
+          - link "Contacto" [ref=f11e20] [cursor=pointer]:
+            - /url: /contacto
+      - button "Abrir carrito, 0 perfiles" [ref=f11e22]
+  - main [ref=f11e27]:
+    - generic [ref=f11e28]:
+      - generic [ref=f11e30]:
+        - navigation "Ruta" [ref=f11e31]:
+          - link "Inicio" [ref=f11e32] [cursor=pointer]:
+            - /url: /
+          - text: /
+          - link "Catálogo" [ref=f11e33] [cursor=pointer]:
+            - /url: /#catalogo
+          - text: /Spotify Premium
+        - img "Spotify Premium" [ref=f11e35]
+      - generic [ref=f11e36]:
+        - generic [ref=f11e37]:
+          - heading "Spotify Premium" [level=1] [ref=f11e38]
+          - paragraph [ref=f11e39]: Música y podcasts sin anuncios, descargas offline y saltos ilimitados en tu propia cuenta.
+          - list [ref=f11e40]:
+            - listitem [ref=f11e41]: Sin anuncios
+            - listitem [ref=f11e44]: Descargas offline
+            - listitem [ref=f11e47]: Saltos ilimitados
+            - listitem [ref=f11e50]: Cuenta individual
+        - generic [ref=f11e54]:
+          - group "Elige tu plan" [ref=f11e55]:
+            - generic [ref=f11e57]:
+              - generic [ref=f11e58] [cursor=pointer]:
+                - generic [ref=f11e59]:
+                  - radio "1 mes S/ 13.00" [checked] [ref=f11e60]
+                  - generic [ref=f11e61]: 1 mes
+                - generic [ref=f11e63]: S/ 13.00
+              - generic [ref=f11e64] [cursor=pointer]:
+                - generic [ref=f11e65]:
+                  - radio "3 meses S/ 12.00 al mes S/ 36.00" [ref=f11e66]
+                  - generic [ref=f11e67]:
+                    - generic [ref=f11e68]: 3 meses
+                    - generic [ref=f11e69]: S/ 12.00 al mes
+                - generic [ref=f11e70]: S/ 36.00
+          - generic [ref=f11e71]:
+            - generic [ref=f11e72]: Cantidad de perfiles
+            - group "Cantidad de perfiles" [ref=f11e73]:
+              - button "Quitar un perfil" [disabled] [ref=f11e74]
+              - status [ref=f11e76]: "1"
+              - button "Agregar un perfil" [ref=f11e77]
+          - generic [ref=f11e80]:
+            - generic [ref=f11e81]: 1 perfil · 1 mes
+            - generic [ref=f11e82]: S/ 13.00
+          - generic [ref=f11e83]:
+            - link "Comprar ahora" [ref=f11e84] [cursor=pointer]:
+              - /url: https://wa.me/51999999999?text=Hola%2C%20quiero%20hacer%20este%20pedido%3A%0A%E2%80%A2%20Spotify%20Premium%20%E2%80%93%201%20perfil%20%C3%97%201%20mes%20%E2%80%93%20S%2F%2013.00%0ATotal%3A%20S%2F%2013.00%0A%C2%BFC%C3%B3mo%20realizo%20el%20pago%3F
+            - button "Agregar al carrito" [ref=f11e87]
+          - list [ref=f11e92]:
+            - listitem [ref=f11e93]: Entrega en minutos
+            - listitem [ref=f11e96]: Garantía total
+            - listitem [ref=f11e100]: Soporte 24/7
+    - generic [ref=f11e104]:
+      - heading "También te puede interesar" [level=2] [ref=f11e105]
+      - link [ref=f11e107] [cursor=pointer]:
+        - /url: /plataforma/youtube-premium
+        - heading "YouTube Premium" [level=3] [ref=f11e112]
+        - paragraph [ref=f11e113]: Música
+        - generic [ref=f11e115]:
+          - paragraph [ref=f11e116]: S/ 14.00
+          - paragraph [ref=f11e117]: por perfil · mensual · desde S/ 13.00/mes
+  - contentinfo [ref=f11e121]:
+    - generic [ref=f11e122]:
+      - paragraph [ref=f11e123]: LokiStream · streaming por WhatsApp desde Trujillo, Perú
+      - list [ref=f11e124]:
+        - listitem [ref=f11e125]:
+          - link "Planes" [ref=f11e126] [cursor=pointer]:
+            - /url: /planes
+        - listitem [ref=f11e127]:
+          - link "Preguntas" [ref=f11e128] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=f11e129]:
+          - link "Contacto" [ref=f11e130] [cursor=pointer]:
+            - /url: /contacto
+        - listitem [ref=f11e131]:
+          - link "WhatsApp" [ref=f11e132] [cursor=pointer]:
+            - /url: https://wa.me/51999999999?text=Hola
+      - paragraph [ref=f11e133]:
+        - text: "© 2026 · Las marcas y logos pertenecen a sus dueños · Fotos: Unsplash y"
+        - link "madiko83, CC BY 2.0" [ref=f11e134] [cursor=pointer]:
+          - /url: https://commons.wikimedia.org/wiki/File:Trujillo-Peru2.jpg
+  - link "Escríbenos por WhatsApp" [ref=f11e135] [cursor=pointer]:
+    - /url: https://wa.me/51999999999?text=Hola%2C%20tengo%20una%20consulta.
+  - dialog [aria-hidden]:
+    - banner:
+      - heading [level=2]: Mi carrito
+      - button
+    - generic:
+      - paragraph: Tu carrito está vacío
+      - paragraph: Elige una plataforma y la cantidad de perfiles que necesitas.
+      - link:
+        - /url: /#catalogo
+        - text: Ver catálogo

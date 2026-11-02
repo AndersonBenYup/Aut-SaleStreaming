@@ -1,0 +1,304 @@
+[
+  {
+    "id": "netflix",
+    "slug": "netflix",
+    "name": "Netflix",
+    "short": "N",
+    "category": "video",
+    "color": "#e50914",
+    "badge": "Más vendido",
+    "description": "Series, películas, documentales y anime en calidad 4K. Perfil personal con tu propio PIN y tu historial.",
+    "features": [
+      "Calidad hasta 4K UHD",
+      "Perfil personal con PIN",
+      "Descargas en tu celular",
+      "Garantía todo el periodo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 15
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 42
+      },
+      {
+        "id": "6m",
+        "label": "6 meses",
+        "months": 6,
+        "price": 80
+      }
+    ],
+    "wordmark": "/logos/netflix-wordmark.svg",
+    "icon": "/logos/netflix.svg",
+    "field": "#b1060f",
+    "ink": "#ffffff",
+    "wordmarkTone": "white",
+    "tagline": "Series y películas en 4K",
+    "mono": "/logos/netflix-wordmark.svg"
+  },
+  {
+    "id": "disney",
+    "slug": "disney-plus",
+    "name": "Disney+",
+    "short": "D+",
+    "category": "video",
+    "color": "#113ccf",
+    "badge": null,
+    "description": "Disney, Pixar, Marvel, Star Wars y National Geographic en un solo lugar. Incluye contenido Star.",
+    "features": [
+      "Marvel, Pixar y Star Wars",
+      "Calidad Full HD / 4K",
+      "Perfil personal",
+      "Garantía todo el periodo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 12
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 33
+      }
+    ],
+    "wordmark": "/logos/disneyplus.svg",
+    "icon": null,
+    "field": "#0c1b5c",
+    "ink": "#ffffff",
+    "wordmarkTone": "white",
+    "tagline": "Marvel, Pixar y Star Wars",
+    "mono": "/logos/disneyplus.svg"
+  },
+  {
+    "id": "max",
+    "slug": "max",
+    "name": "Max",
+    "short": "max",
+    "category": "video",
+    "color": "#5b2bff",
+    "badge": "Nuevo",
+    "description": "Las series de HBO, el universo DC, Warner Bros. y deportes en vivo seleccionados.",
+    "features": [
+      "Series HBO originales",
+      "Películas de estreno",
+      "Perfil personal",
+      "Garantía todo el periodo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 12
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 33
+      }
+    ],
+    "wordmark": "/logos/max-wordmark.svg",
+    "icon": "/logos/max.svg",
+    "field": "#0026e6",
+    "ink": "#ffffff",
+    "wordmarkTone": "white",
+    "tagline": "Lo mejor de HBO",
+    "mono": "/logos/max-wordmark.svg"
+  },
+  {
+    "id": "prime",
+    "slug": "prime-video",
+    "name": "Prime Video",
+    "short": "prime",
+    "category": "video",
+    "color": "#00a8e1",
+    "badge": null,
+    "description": "Producciones originales de Amazon, películas y series exclusivas con calidad 4K.",
+    "features": [
+      "Originales de Amazon",
+      "Calidad 4K HDR",
+      "Perfil personal",
+      "Garantía todo el periodo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 10
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 27
+      }
+    ],
+    "wordmark": "/logos/prime-wordmark.svg",
+    "icon": "/logos/prime-mono.svg",
+    "field": "#0f171e",
+    "ink": "#ffffff",
+    "wordmarkTone": "color",
+    "tagline": "Originales de Amazon",
+    "mono": "/logos/prime-mono.svg"
+  },
+  {
+    "id": "spotify",
+    "slug": "spotify",
+    "name": "Spotify Premium",
+    "short": "♫",
+    "category": "musica",
+    "color": "#1db954",
+    "badge": null,
+    "description": "Música y podcasts sin anuncios, descargas offline y saltos ilimitados en tu propia cuenta.",
+    "features": [
+      "Sin anuncios",
+      "Descargas offline",
+      "Saltos ilimitados",
+      "Cuenta individual"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 13
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 36
+      }
+    ],
+    "wordmark": "/logos/spotify-wordmark.svg",
+    "icon": "/logos/spotify.svg",
+    "field": "#1ed760",
+    "ink": "#0a0a0d",
+    "wordmarkTone": "black",
+    "tagline": "Música sin anuncios",
+    "mono": "/logos/spotify-wordmark.svg"
+  },
+  {
+    "id": "youtube",
+    "slug": "youtube-premium",
+    "name": "YouTube Premium",
+    "short": "▶",
+    "category": "musica",
+    "color": "#ff0033",
+    "badge": null,
+    "description": "YouTube sin anuncios, reproducción en segundo plano y YouTube Music incluido.",
+    "features": [
+      "Sin anuncios",
+      "Segundo plano",
+      "YouTube Music incluido",
+      "Activación en tu correo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 14
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 39
+      }
+    ],
+    "wordmark": "/logos/youtube-premium-wordmark.svg",
+    "icon": "/logos/youtube.svg",
+    "field": "#f1f1f1",
+    "ink": "#0a0a0d",
+    "wordmarkTone": "color",
+    "tagline": "YouTube sin anuncios",
+    "mono": "/logos/youtube-premium-wordmark.svg"
+  },
+  {
+    "id": "crunchyroll",
+    "slug": "crunchyroll",
+    "name": "Crunchyroll",
+    "short": "cr",
+    "category": "anime",
+    "color": "#f47521",
+    "badge": null,
+    "description": "El catálogo de anime más grande, con simulcast una hora después de Japón.",
+    "features": [
+      "Simulcast de estrenos",
+      "Sin anuncios",
+      "Perfil personal",
+      "Garantía todo el periodo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 9
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 24
+      }
+    ],
+    "wordmark": null,
+    "icon": "/logos/crunchyroll.svg",
+    "field": "#f47521",
+    "ink": "#0a0a0d",
+    "wordmarkTone": "black",
+    "tagline": "Anime al día de Japón",
+    "mono": null
+  },
+  {
+    "id": "paramount",
+    "slug": "paramount-plus",
+    "name": "Paramount+",
+    "short": "P+",
+    "category": "video",
+    "color": "#0064ff",
+    "badge": null,
+    "description": "Películas de Paramount, series originales y el contenido de CBS, Nickelodeon y MTV.",
+    "features": [
+      "Estrenos de Paramount",
+      "Series originales",
+      "Perfil personal",
+      "Garantía todo el periodo"
+    ],
+    "plans": [
+      {
+        "id": "1m",
+        "label": "1 mes",
+        "months": 1,
+        "price": 9
+      },
+      {
+        "id": "3m",
+        "label": "3 meses",
+        "months": 3,
+        "price": 24
+      }
+    ],
+    "wordmark": "/logos/paramount-wordmark.svg",
+    "icon": "/logos/paramountplus.svg",
+    "field": "#0057ff",
+    "ink": "#ffffff",
+    "wordmarkTone": "white",
+    "tagline": "Estrenos de Paramount",
+    "mono": "/logos/paramount-wordmark.svg"
+  }
+]

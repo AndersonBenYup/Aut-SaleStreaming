@@ -1,0 +1,306 @@
+- generic [ref=f17e2]:
+  - generic [ref=f17e3]:
+    - link "Saltar al contenido" [ref=f17e4] [cursor=pointer]:
+      - /url: "#contenido"
+    - banner [ref=f17e5]:
+      - navigation "Principal" [ref=f17e7]:
+        - link "LokiStream" [ref=f17e8] [cursor=pointer]:
+          - /url: /
+        - list [ref=f17e12]:
+          - listitem [ref=f17e13]:
+            - link "Catálogo" [ref=f17e14] [cursor=pointer]:
+              - /url: /#catalogo
+          - listitem [ref=f17e15]:
+            - link "Planes" [ref=f17e16] [cursor=pointer]:
+              - /url: /planes
+          - listitem [ref=f17e17]:
+            - link "Preguntas" [ref=f17e18] [cursor=pointer]:
+              - /url: /faq
+          - listitem [ref=f17e19]:
+            - link "Contacto" [ref=f17e20] [cursor=pointer]:
+              - /url: /contacto
+        - button "Abrir carrito, 0 perfiles" [ref=f17e22]
+    - main [ref=f17e27]:
+      - region [ref=f17e28]:
+        - generic [ref=f17e29]:
+          - generic [ref=f17e30]:
+            - heading "LokiStream" [level=1] [ref=f17e31]: LOKI
+            - generic [ref=f17e32]:
+              - paragraph [ref=f17e33]: Netflix, Disney+, Max, Spotify y más, por perfil y desde S/ 8.00 al mes. Pides por WhatsApp y tu acceso llega en minutos.
+              - generic [ref=f17e34]:
+                - link "Ver plataformas y precios" [ref=f17e35] [cursor=pointer]:
+                  - /url: /#catalogo
+                - link "Escríbenos" [ref=f17e36] [cursor=pointer]:
+                  - /url: https://wa.me/51999999999?text=Hola%2C%20quiero%20hacer%20una%20consulta%20antes%20de%20comprar.
+            - generic [aria-hidden] [ref=f17e39]: STREAM
+          - generic "Plataformas disponibles" [ref=f17e40]:
+            - tabpanel [ref=f17e345]:
+              - generic [ref=f17e346]:
+                - paragraph [ref=f17e347]: Originales de Amazon
+                - link "Ver Prime Video" [ref=f17e348] [cursor=pointer]:
+                  - /url: /plataforma/prime-video
+              - img "Prime Video" [ref=f17e350]
+              - paragraph [ref=f17e351]:
+                - generic [ref=f17e352]: S/ 10.00
+                - text: por perfil, al mes
+        - tablist "Elegir plataforma" [ref=f17e50]:
+          - tab [ref=f17e51]:
+            - img "Netflix" [ref=f17e52]
+          - tab [ref=f17e54]:
+            - img "Disney+" [ref=f17e55]
+          - tab [ref=f17e56]:
+            - img "Max" [ref=f17e57]
+          - tab [selected] [ref=f17e58]:
+            - img "Prime Video" [ref=f17e59]
+          - tab [ref=f17e60]:
+            - img "Spotify Premium" [ref=f17e61]
+          - tab [ref=f17e62]:
+            - img "YouTube Premium" [ref=f17e63]
+          - tab [ref=f17e64]:
+            - img "Crunchyroll" [ref=f17e65]:
+              - generic [ref=f17e66]: crunchyroll
+          - tab [ref=f17e67]:
+            - img "Paramount+" [ref=f17e68]
+      - region [ref=f17e69]:
+        - generic [ref=f17e70]:
+          - heading "Plataformas y precios" [level=2] [ref=f17e71]
+          - paragraph [ref=f17e72]: Precio por perfil personal, con tu propio PIN. Puedes pedir hasta seis perfiles de cada plataforma.
+        - generic [aria-hidden] [ref=f17e73]:
+          - generic [ref=f17e74]: Plataforma
+          - generic [ref=f17e75]: Incluye
+          - generic [ref=f17e76]: 1 mes
+          - generic [ref=f17e77]: 3 meses
+        - list [ref=f17e78]:
+          - listitem [ref=f17e79]:
+            - link "Netflix Netflix Series y películas en 4K S/ 19.00 S/ 42.00" [ref=f17e80] [cursor=pointer]:
+              - /url: /plataforma/netflix
+              - generic [ref=f17e81]:
+                - img "Netflix" [ref=f17e83]
+                - generic [ref=f17e84]: Netflix
+              - generic [ref=f17e85]: Series y películas en 4K
+              - generic [ref=f17e86]: S/ 19.00
+              - generic [ref=f17e87]: S/ 42.00
+          - listitem [ref=f17e88]:
+            - link "Disney+ Disney+ Marvel, Pixar y Star Wars S/ 12.00 S/ 33.00" [ref=f17e89] [cursor=pointer]:
+              - /url: /plataforma/disney-plus
+              - generic [ref=f17e90]:
+                - img "Disney+" [ref=f17e92]
+                - generic [ref=f17e93]: Disney+
+              - generic [ref=f17e94]: Marvel, Pixar y Star Wars
+              - generic [ref=f17e95]: S/ 12.00
+              - generic [ref=f17e96]: S/ 33.00
+          - listitem [ref=f17e97]:
+            - link "Max Max Lo mejor de HBO S/ 12.00 S/ 33.00" [ref=f17e98] [cursor=pointer]:
+              - /url: /plataforma/max
+              - generic [ref=f17e99]:
+                - img "Max" [ref=f17e101]
+                - generic [ref=f17e102]: Max
+              - generic [ref=f17e103]: Lo mejor de HBO
+              - generic [ref=f17e104]: S/ 12.00
+              - generic [ref=f17e105]: S/ 33.00
+          - listitem [ref=f17e106]:
+            - link "Prime Video Prime Video Originales de Amazon S/ 10.00 S/ 27.00" [ref=f17e107] [cursor=pointer]:
+              - /url: /plataforma/prime-video
+              - generic [ref=f17e108]:
+                - img "Prime Video" [ref=f17e110]
+                - generic [ref=f17e111]: Prime Video
+              - generic [ref=f17e112]: Originales de Amazon
+              - generic [ref=f17e113]: S/ 10.00
+              - generic [ref=f17e114]: S/ 27.00
+          - listitem [ref=f17e115]:
+            - link "Spotify Premium Spotify Premium Música sin anuncios S/ 13.00 S/ 36.00" [ref=f17e116] [cursor=pointer]:
+              - /url: /plataforma/spotify
+              - generic [ref=f17e117]:
+                - img "Spotify Premium" [ref=f17e119]
+                - generic [ref=f17e120]: Spotify Premium
+              - generic [ref=f17e121]: Música sin anuncios
+              - generic [ref=f17e122]: S/ 13.00
+              - generic [ref=f17e123]: S/ 36.00
+          - listitem [ref=f17e124]:
+            - link "YouTube Premium YouTube Premium YouTube sin anuncios S/ 14.00 S/ 39.00" [ref=f17e125] [cursor=pointer]:
+              - /url: /plataforma/youtube-premium
+              - generic [ref=f17e126]:
+                - img "YouTube Premium" [ref=f17e128]
+                - generic [ref=f17e129]: YouTube Premium
+              - generic [ref=f17e130]: YouTube sin anuncios
+              - generic [ref=f17e131]: S/ 14.00
+              - generic [ref=f17e132]: S/ 39.00
+          - listitem [ref=f17e133]:
+            - link "Crunchyroll Crunchyroll Anime al día de Japón S/ 9.00 S/ 24.00" [ref=f17e134] [cursor=pointer]:
+              - /url: /plataforma/crunchyroll
+              - generic [ref=f17e135]:
+                - img "Crunchyroll" [ref=f17e137]
+                - generic [ref=f17e138]: Crunchyroll
+              - generic [ref=f17e139]: Anime al día de Japón
+              - generic [ref=f17e140]: S/ 9.00
+              - generic [ref=f17e141]: S/ 24.00
+          - listitem [ref=f17e142]:
+            - link "Paramount+ Paramount+ Estrenos de Paramount S/ 9.00 S/ 24.00" [ref=f17e143] [cursor=pointer]:
+              - /url: /plataforma/paramount-plus
+              - generic [ref=f17e144]:
+                - img "Paramount+" [ref=f17e146]
+                - generic [ref=f17e147]: Paramount+
+              - generic [ref=f17e148]: Estrenos de Paramount
+              - generic [ref=f17e149]: S/ 9.00
+              - generic [ref=f17e150]: S/ 24.00
+      - region [ref=f17e151]:
+        - generic [ref=f17e152]:
+          - heading "Arma tu pedido" [level=2] [ref=f17e153]
+          - paragraph [ref=f17e154]: "Así funciona: lo que elijas aquí es, palabra por palabra, el mensaje que nos llega por WhatsApp. Pagas y recibes tu acceso en minutos."
+        - generic [ref=f17e155]:
+          - generic [ref=f17e156]:
+            - group "Elige la plataforma" [ref=f17e157]:
+              - generic [ref=f17e159]:
+                - button "Netflix" [pressed] [ref=f17e160]:
+                  - img "Netflix" [ref=f17e161]
+                - button "Disney+" [ref=f17e162]:
+                  - img "Disney+" [ref=f17e163]
+                - button "Max" [ref=f17e164]:
+                  - img "Max" [ref=f17e165]
+                - button "Prime Video" [ref=f17e166]:
+                  - img "Prime Video" [ref=f17e167]
+                - button "Spotify Premium" [ref=f17e168]:
+                  - img "Spotify Premium" [ref=f17e169]
+                - button "YouTube Premium" [ref=f17e170]:
+                  - img "YouTube Premium" [ref=f17e171]
+                - button "Crunchyroll" [ref=f17e172]:
+                  - img "Crunchyroll" [ref=f17e173]
+                - button "Paramount+" [ref=f17e174]:
+                  - img "Paramount+" [ref=f17e175]
+            - group "Por cuánto tiempo" [ref=f17e176]:
+              - generic [ref=f17e178]:
+                - button "1 mes · S/ 19.00" [pressed] [ref=f17e179]
+                - button "3 meses · S/ 42.00" [ref=f17e180]
+                - button "6 meses · S/ 80.00" [ref=f17e181]
+            - generic [ref=f17e182]:
+              - generic [ref=f17e183]:
+                - paragraph [ref=f17e184]: Cuántos perfiles
+                - group "Cantidad de perfiles" [ref=f17e186]:
+                  - button "Quitar un perfil" [ref=f17e187]
+                  - status [ref=f17e189]: "2"
+                  - button "Agregar un perfil" [ref=f17e190]
+              - paragraph [ref=f17e193]:
+                - generic [ref=f17e194]: 2 perfiles · 1 mes
+                - generic [ref=f17e195]: S/ 38.00
+          - generic [ref=f17e197]:
+            - generic [ref=f17e198]:
+              - generic [ref=f17e199]: L
+              - generic [ref=f17e200]:
+                - generic [ref=f17e201]: LokiStream
+                - generic [ref=f17e202]: en línea
+            - generic [ref=f17e203]:
+              - paragraph [ref=f17e204]:
+                - text: "Hola, quiero hacer este pedido: • Netflix – 2 perfiles × 1 mes – S/ 38.00 Total: S/ 38.00 ¿Cómo realizo el pago?"
+                - generic [ref=f17e205]: Tú
+              - paragraph [ref=f17e206]: Te paso el Yape para pagar S/ 38.00. Apenas lo confirmo te envío tu acceso.
+              - paragraph [ref=f17e207]:
+                - text: "Listo. Tu acceso a Netflix: 2 perfiles personales con PIN propio, con garantía hasta el 2 de diciembre."
+                - generic [ref=f17e208]: Ejemplo de entrega
+            - generic [ref=f17e209]:
+              - button "Enviar este pedido" [ref=f17e210]
+              - button "Al carrito" [ref=f17e213]
+      - region [ref=f17e218]:
+        - generic [ref=f17e219]:
+          - generic [ref=f17e220]:
+            - heading "Packs del mes" [level=2] [ref=f17e221]
+            - list [ref=f17e222]:
+              - listitem [ref=f17e223]:
+                - button "Pack Cine" [ref=f17e224]
+              - listitem [ref=f17e226]:
+                - button "Pack Total" [pressed] [ref=f17e227]
+              - listitem [ref=f17e229]:
+                - button "Pack Otaku" [ref=f17e230]
+          - generic [ref=f17e234]:
+            - paragraph [ref=f17e235]: S/ 55al mes
+            - paragraph [ref=f17e236]: "Todo el entretenimiento de la casa en un solo pago. Incluye Netflix, Disney+, Max, Prime Video, Spotify Premium: 5 servicios premium, soporte prioritario 24/7, ahorras s/ 7 al mes. Por separado pagarías S/ 66.00."
+            - list "Plataformas incluidas" [ref=f17e237]:
+              - listitem [ref=f17e238]:
+                - img "Netflix" [ref=f17e239]
+              - listitem [ref=f17e240]:
+                - img "Disney+" [ref=f17e241]
+              - listitem [ref=f17e242]:
+                - img "Max" [ref=f17e243]
+              - listitem [ref=f17e244]:
+                - img "Prime Video" [ref=f17e245]
+              - listitem [ref=f17e246]:
+                - img "Spotify Premium" [ref=f17e247]
+            - button "Pedir el Pack Total" [ref=f17e248]
+      - region [ref=f17e251]:
+        - generic [ref=f17e252]:
+          - generic [ref=f17e253]:
+            - heading "Antes de pedir" [level=2] [ref=f17e254]
+            - list [ref=f17e255]:
+              - listitem [ref=f17e256]:
+                - button "¿Cómo compro?" [expanded] [ref=f17e257]
+              - listitem [ref=f17e259]:
+                - button "¿Qué métodos de pago aceptan?" [ref=f17e260]
+              - listitem [ref=f17e262]:
+                - button "¿En cuánto tiempo recibo mi acceso?" [ref=f17e263]
+              - listitem [ref=f17e265]:
+                - button "¿Qué significa «por perfil»?" [ref=f17e266]
+              - listitem [ref=f17e268]:
+                - button "¿Puedo comprar varios perfiles?" [ref=f17e269]
+              - listitem [ref=f17e271]:
+                - button "¿Qué pasa si mi perfil deja de funcionar?" [ref=f17e272]
+            - link "Ver todas las preguntas" [ref=f17e274] [cursor=pointer]:
+              - /url: /faq
+          - paragraph [ref=f17e277]: Elige la plataforma y el plan, agrégalo al carrito y pulsa «Pedir por WhatsApp». Se abre un chat con tu pedido ya escrito y te indicamos los métodos de pago.
+      - region [ref=f17e278]:
+        - generic [ref=f17e279]:
+          - generic [ref=f17e280]:
+            - heading "Desde Trujillo" [level=2] [ref=f17e281]
+            - paragraph [ref=f17e282]: Somos un equipo pequeño de Trujillo, Perú. Atendemos a todo el país por WhatsApp, lunes a domingo · 8:00 a 23:00, y la misma persona que te vende es la que te ayuda si algo falla.
+            - generic [ref=f17e283]:
+              - generic [ref=f17e284]:
+                - term [ref=f17e285]: Pagas con
+                - definition [ref=f17e286]: Yape, Plin o transferencia
+              - generic [ref=f17e287]:
+                - term [ref=f17e288]: Garantía
+                - definition [ref=f17e289]: Todo el periodo que pagaste
+          - figure "Plaza de Armas de Trujillo." [ref=f17e290]:
+            - img "Plaza de Armas de Trujillo con la catedral amarilla y el monumento a la libertad" [ref=f17e292]
+      - region [ref=f17e294]:
+        - link "Escríbenos por WhatsApp y te ayudamos a elegir. Respondemos de 8:00 a 23:00." [ref=f17e295] [cursor=pointer]:
+          - /url: https://wa.me/51999999999?text=Hola%2C%20quiero%20pedir%20una%20plataforma.%20%C2%BFQu%C3%A9%20tienen%20disponible%3F
+          - generic [aria-hidden] [ref=f17e300]: Pedir
+    - contentinfo [ref=f17e301]:
+      - generic [ref=f17e302]:
+        - paragraph [ref=f17e303]: LokiStream · streaming por WhatsApp desde Trujillo, Perú
+        - list [ref=f17e304]:
+          - listitem [ref=f17e305]:
+            - link "Planes" [ref=f17e306] [cursor=pointer]:
+              - /url: /planes
+          - listitem [ref=f17e307]:
+            - link "Preguntas" [ref=f17e308] [cursor=pointer]:
+              - /url: /faq
+          - listitem [ref=f17e309]:
+            - link "Contacto" [ref=f17e310] [cursor=pointer]:
+              - /url: /contacto
+          - listitem [ref=f17e311]:
+            - link "WhatsApp" [ref=f17e312] [cursor=pointer]:
+              - /url: https://wa.me/51999999999?text=Hola
+        - paragraph [ref=f17e313]:
+          - text: "© 2026 · Las marcas y logos pertenecen a sus dueños · Foto de Trujillo:"
+          - link "madiko83, CC BY 2.0" [ref=f17e314] [cursor=pointer]:
+            - /url: https://commons.wikimedia.org/wiki/File:Trujillo-Peru2.jpg
+    - link "Escríbenos por WhatsApp" [ref=f17e315] [cursor=pointer]:
+      - /url: https://wa.me/51999999999?text=Hola%2C%20tengo%20una%20consulta.
+    - dialog [aria-hidden]:
+      - banner:
+        - heading [level=2]: Mi carrito
+        - button
+      - generic:
+        - paragraph: Tu carrito está vacío
+        - paragraph: Elige una plataforma y la cantidad de perfiles que necesitas.
+        - link:
+          - /url: /#catalogo
+          - text: Ver catálogo
+  - dialog [ref=f17e354]:
+    - button "Cerrar" [ref=f17e322]
+    - generic [ref=f17e355]:
+      - heading "Pedido LK-LVNE2F" [level=2] [ref=f17e359]
+      - paragraph [ref=f17e360]: Lo registramos y abrimos WhatsApp con tu pedido. Envía el mensaje y te pasamos los datos de pago.
+      - generic [ref=f17e361]:
+        - link "Abrir WhatsApp otra vez" [ref=f17e362] [cursor=pointer]:
+          - /url: https://wa.me/51999999999?text=Hola%2C%20me%20interesa%20el%20Pack%20Total%20(Netflix%2C%20Disney%2B%2C%20Max%2C%20Prime%20Video%2C%20Spotify%20Premium)%20a%20S%2F%2055.00%20al%20mes%20(pedido%20LK-LVNE2F).%20%C2%BFC%C3%B3mo%20lo%20activo%3F%0AA%20nombre%20de%3A%20Ana%20Torres
+        - button "Listo" [ref=f17e365]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "pack-cine", "name": "Pack Cine", "price": 35, "period": "mes",
+    "description": "Lo esencial para maratonear el fin de semana.",
+    "platforms": ["netflix", "disney", "max"],
+    "perks": ["3 perfiles personales", "Calidad Full HD / 4K", "Recordatorio de renovación"],
+    "highlight": false
+  },
+  {
+    "id": "pack-total", "name": "Pack Total", "price": 55, "period": "mes",
+    "description": "Todo el entretenimiento de la casa en un solo pago.",
+    "platforms": ["netflix", "disney", "max", "prime", "spotify"],
+    "perks": ["5 servicios premium", "Soporte prioritario 24/7", "Ahorras S/ 7 al mes"],
+    "highlight": true
+  },
+  {
+    "id": "pack-otaku", "name": "Pack Otaku", "price": 20, "period": "mes",
+    "description": "Anime y música para ti, sin anuncios.",
+    "platforms": ["crunchyroll", "spotify"],
+    "perks": ["Simulcast de anime", "Música sin anuncios", "Activación en minutos"],
+    "highlight": false
+  }
+]
