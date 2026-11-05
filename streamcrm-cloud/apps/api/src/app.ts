@@ -22,6 +22,7 @@ import { dashboardRouter } from './routes/panel/dashboard.js';
 import { subscriptionsRouter } from './routes/panel/subscriptions.js';
 import { accountsRouter, activityRouter, customersRouter, paymentsRouter, servicesRouter } from './routes/panel/records.js';
 import { adminRouter, settingsRouter, teamRouter } from './routes/panel/settings.js';
+import { chatsRouter } from './routes/panel/chats.js';
 
 /** Build del panel (apps/web/dist). Si existe, la API lo sirve en la misma URL. */
 const webDist = path.resolve(apiRoot, '../web/dist');
@@ -66,6 +67,7 @@ export function createApp() {
   tenantApi.use('/activity', activityRouter());
   tenantApi.use('/settings', settingsRouter());
   tenantApi.use('/team', teamRouter());
+  tenantApi.use('/chats', chatsRouter());
   api.use(tenantApi);
   api.use((_req, res) => {
     res.status(404).json({ error: 'Ruta no encontrada' });

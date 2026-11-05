@@ -63,6 +63,11 @@ var SEED = {
       "PEDIDOS POR HORA POR TELEFONO",
       "5",
       "Freno contra pedidos falsos desde la web"
+    ],
+    [
+      "INSTRUCCIONES DE PAGO",
+      "Yape o Plin al 999 999 999 a nombre de LokiStream",
+      "Lo que el vendedor de WhatsApp le dice al cliente para pagar"
     ]
   ],
   "PLATAFORMAS": [
@@ -186,7 +191,8 @@ var SEED = {
       "1 mes",
       1,
       15,
-      true
+      true,
+      14
     ],
     [
       "netflix",
@@ -194,7 +200,8 @@ var SEED = {
       "3 meses",
       3,
       42,
-      true
+      true,
+      40
     ],
     [
       "netflix",
@@ -202,7 +209,8 @@ var SEED = {
       "6 meses",
       6,
       80,
-      true
+      true,
+      78
     ],
     [
       "disney",
@@ -210,7 +218,8 @@ var SEED = {
       "1 mes",
       1,
       12,
-      true
+      true,
+      11
     ],
     [
       "disney",
@@ -218,7 +227,8 @@ var SEED = {
       "3 meses",
       3,
       33,
-      true
+      true,
+      31
     ],
     [
       "max",
@@ -226,7 +236,8 @@ var SEED = {
       "1 mes",
       1,
       12,
-      true
+      true,
+      11
     ],
     [
       "max",
@@ -234,7 +245,8 @@ var SEED = {
       "3 meses",
       3,
       33,
-      true
+      true,
+      31
     ],
     [
       "prime",
@@ -242,7 +254,8 @@ var SEED = {
       "1 mes",
       1,
       10,
-      true
+      true,
+      9
     ],
     [
       "prime",
@@ -250,7 +263,8 @@ var SEED = {
       "3 meses",
       3,
       27,
-      true
+      true,
+      25
     ],
     [
       "spotify",
@@ -258,7 +272,8 @@ var SEED = {
       "1 mes",
       1,
       13,
-      true
+      true,
+      12
     ],
     [
       "spotify",
@@ -266,7 +281,8 @@ var SEED = {
       "3 meses",
       3,
       36,
-      true
+      true,
+      34
     ],
     [
       "youtube",
@@ -274,7 +290,8 @@ var SEED = {
       "1 mes",
       1,
       14,
-      true
+      true,
+      13
     ],
     [
       "youtube",
@@ -282,7 +299,8 @@ var SEED = {
       "3 meses",
       3,
       39,
-      true
+      true,
+      37
     ],
     [
       "crunchyroll",
@@ -290,7 +308,8 @@ var SEED = {
       "1 mes",
       1,
       9,
-      true
+      true,
+      8
     ],
     [
       "crunchyroll",
@@ -298,7 +317,8 @@ var SEED = {
       "3 meses",
       3,
       24,
-      true
+      true,
+      22
     ],
     [
       "paramount",
@@ -306,7 +326,8 @@ var SEED = {
       "1 mes",
       1,
       9,
-      true
+      true,
+      8
     ],
     [
       "paramount",
@@ -314,7 +335,8 @@ var SEED = {
       "3 meses",
       3,
       24,
-      true
+      true,
+      22
     ]
   ],
   "PACKS": [
@@ -327,7 +349,8 @@ var SEED = {
       "netflix, disney, max",
       "3 perfiles personales | Calidad Full HD / 4K | Recordatorio de renovación",
       false,
-      true
+      true,
+      33
     ],
     [
       "pack-total",
@@ -338,7 +361,8 @@ var SEED = {
       "netflix, disney, max, prime, spotify",
       "5 servicios premium | Soporte prioritario 24/7 | Ahorras S/ 7 al mes",
       true,
-      true
+      true,
+      53
     ],
     [
       "pack-otaku",
@@ -349,7 +373,8 @@ var SEED = {
       "crunchyroll, spotify",
       "Simulcast de anime | Música sin anuncios | Activación en minutos",
       false,
-      true
+      true,
+      18
     ]
   ],
   "FAQ": [

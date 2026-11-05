@@ -41,6 +41,36 @@ function normalizeHex(v) {
   return m ? '#' + m[1].toLowerCase() : null;
 }
 
+/** PRECIO MINIMO válido (entre 0 y el precio); vacío o inválido = sin rebaja. */
+function minPriceFrom(v, price, errors, tab, row) {
+  var min = toNumber(v);
+  if (min === null) return round2(price);
+  if (min < 0 || min > price) {
+    errors.push({ tab: tab, row: row, error: 'PRECIO MINIMO debe estar entre 0 y el PRECIO: se ignora' });
+    return round2(price);
+  }
+  return round2(min);
+}
+
+/** Copia del catálogo sin los precios mínimos (lo que ve la web). */
+function withoutMinPrices(catalog) {
+  return {
+    site: catalog.site,
+    platforms: catalog.platforms.map(function (p) {
+      var c = {};
+      Object.keys(p).forEach(function (k) { c[k] = p[k]; });
+      c.plans = p.plans.map(function (pl) { return { id: pl.id, label: pl.label, months: pl.months, price: pl.price }; });
+      return c;
+    }),
+    packs: catalog.packs.map(function (k) {
+      var c = {};
+      Object.keys(k).forEach(function (key) { if (key !== 'minPrice') c[key] = k[key]; });
+      return c;
+    }),
+    faq: catalog.faq,
+  };
+}
+
 function buildCatalog(tables) {
   var errors = [];
   var settings = readSettings(tables.AJUSTES);
@@ -68,6 +98,7 @@ function buildCatalog(tables) {
       label: toText(r.label) || planLabel(months),
       months: months,
       price: round2(price),
+      minPrice: minPriceFrom(r.minPrice, price, errors, TABS.PLANES, r._row),
     });
   });
 
@@ -143,6 +174,7 @@ function buildCatalog(tables) {
       platforms: known,
       perks: splitList(r.perks),
       highlight: toBool(r.highlight, false),
+      minPrice: minPriceFrom(r.minPrice, price, errors, TABS.PACKS, r._row),
     });
   });
 
@@ -157,7 +189,7 @@ function buildCatalog(tables) {
 
 /** Versión pública (sin ajustes internos) con una huella para que la web sepa si cambió. */
 function publicCatalog(catalog, updatedAt) {
-  var body = { site: catalog.site, platforms: catalog.platforms, packs: catalog.packs, faq: catalog.faq };
+  var body = withoutMinPrices(catalog);
   var json = JSON.stringify(body);
   var hash = 0;
   for (var i = 0; i < json.length; i++) hash = (hash * 31 + json.charCodeAt(i)) | 0;

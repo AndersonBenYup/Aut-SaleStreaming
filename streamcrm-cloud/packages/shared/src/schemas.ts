@@ -97,6 +97,19 @@ export const tenantSettingsInput = z.object({
   ownerNotifyPhone: z.string().max(30).optional().nullable(),
   staffCanSeePasswords: z.boolean().optional(),
   privacyText: z.string().max(10000).optional(),
+  // Vendedor por WhatsApp con IA
+  salesAgentEnabled: z.boolean().optional(),
+  storeApiUrl: z
+    .string()
+    .trim()
+    .url()
+    .refine((u) => u.startsWith('https://') || u.startsWith('http://localhost') || u.startsWith('http://127.0.0.1'), 'La URL de la tienda debe ser https')
+    .optional()
+    .nullable()
+    .or(z.literal('').transform(() => null)),
+  storeBotKey: z.string().min(16, 'La clave del bot debe tener al menos 16 caracteres').max(200).optional().nullable().or(z.literal('').transform(() => null)),
+  salesToneGuide: z.string().max(8000).optional().nullable(),
+  salesMaxDiscountRounds: z.coerce.number().int().min(0).max(5).optional(),
 });
 export type TenantSettingsInput = z.infer<typeof tenantSettingsInput>;
 

@@ -65,6 +65,16 @@ export const tenants = pgTable('tenants', {
   sheetLastError: text('sheet_last_error'),
   /** Resultado del último escaneo: filas totales, importadas, en espera… (para el panel). */
   sheetLastScanStats: jsonb('sheet_last_scan_stats').$type<Record<string, number>>(),
+  // --- Vendedor por WhatsApp con IA ---
+  salesAgentEnabled: boolean('sales_agent_enabled').notNull().default(false),
+  /** URL /exec de la tienda en Apps Script (catálogo, PRECIO MINIMO y pedidos). */
+  storeApiUrl: text('store_api_url'),
+  /** BOT_API_KEY de la tienda (cifrada). */
+  storeBotKeyEnc: text('store_bot_key_enc'),
+  /** Cómo habla el vendedor: jerga, trato, ejemplos de chats reales. Lo escribe el dueño. */
+  salesToneGuide: text('sales_tone_guide'),
+  /** Cuántas rebajas puede dar el vendedor por producto en una conversación. */
+  salesMaxDiscountRounds: integer('sales_max_discount_rounds').notNull().default(2),
   createdAt: createdAt(),
   updatedAt: updatedAt(),
 });
@@ -276,6 +286,52 @@ export const webhookEvents = pgTable(
     processedAt: timestamp('processed_at', { withTimezone: true }),
   },
   (t) => [uniqueIndex('webhook_events_source_ext_uq').on(t.source, t.externalId)],
+);
+
+/**
+ * Conversación del vendedor de WhatsApp con un número. `messages` es el historial tal como lo devuelve
+ * la API de Claude (incluye bloques de razonamiento): solo se agrega al final, nunca se edita.
+ * Tras 24 h sin mensajes se abre un hilo nuevo.
+ */
+export const chatThreads = pgTable(
+  'chat_threads',
+  {
+    id: id(),
+    tenantId: tenantId(),
+    phone: text('phone').notNull(), // E.164
+    customerId: uuid('customer_id').references(() => customers.id, { onDelete: 'set null' }),
+    messages: jsonb('messages').$type<unknown[]>().notNull().default([]),
+    /** El dueño tomó el chat: el bot no responde hasta esta fecha. */
+    botPausedUntil: timestamp('bot_paused_until', { withTimezone: true }),
+    handoffReason: text('handoff_reason'),
+    lastOrderId: text('last_order_id'),
+    inputTokens: integer('input_tokens').notNull().default(0),
+    outputTokens: integer('output_tokens').notNull().default(0),
+    cacheReadTokens: integer('cache_read_tokens').notNull().default(0),
+    lastMessageAt: timestamp('last_message_at', { withTimezone: true }).notNull().defaultNow(),
+    createdAt: createdAt(),
+  },
+  (t) => [index('chat_threads_tenant_phone_idx').on(t.tenantId, t.phone, t.lastMessageAt)],
+);
+
+/** Precios que el vendedor ofreció (los decide el servidor, no la IA). Vencen a las 24 h. */
+export const salesOffers = pgTable(
+  'sales_offers',
+  {
+    id: id(),
+    tenantId: tenantId(),
+    threadId: uuid('thread_id')
+      .notNull()
+      .references(() => chatThreads.id, { onDelete: 'cascade' }),
+    itemKey: text('item_key').notNull(), // netflix:1m | pack:pack-cine
+    listPrice: numeric('list_price', { precision: 10, scale: 2 }).notNull(),
+    price: numeric('price', { precision: 10, scale: 2 }).notNull(),
+    round: integer('round').notNull().default(0), // 0 = precio de lista, 1+ = rebajas
+    expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+    usedAt: timestamp('used_at', { withTimezone: true }),
+    createdAt: createdAt(),
+  },
+  (t) => [index('sales_offers_thread_idx').on(t.threadId, t.itemKey)],
 );
 
 export const billingEvents = pgTable('billing_events', {

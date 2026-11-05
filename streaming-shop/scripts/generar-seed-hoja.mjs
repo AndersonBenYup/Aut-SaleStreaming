@@ -12,6 +12,9 @@ const platforms = read('platforms.json')
 const packs = read('plans.json')
 const faq = read('faq.json')
 
+// Lo mínimo que el vendedor de WhatsApp puede aceptar al regatear (≈10 % menos, máximo S/ 2). Se edita en la hoja.
+const minPrice = (price) => Math.max(Math.round(price * 0.9), price - 2)
+
 const categoryLabel = { video: 'Películas y series', musica: 'Música', anime: 'Anime' }
 
 const SEED = {
@@ -28,14 +31,15 @@ const SEED = {
     ['DIAS POR MES', '30', 'Días que dura cada mes vendido (para calcular el vencimiento)'],
     ['CODIGO PAIS', '51', 'Se agrega a los celulares de 9 dígitos'],
     ['PEDIDOS POR HORA POR TELEFONO', '5', 'Freno contra pedidos falsos desde la web'],
+    ['INSTRUCCIONES DE PAGO', 'Yape o Plin al 999 999 999 a nombre de LokiStream', 'Lo que el vendedor de WhatsApp le dice al cliente para pagar'],
   ],
   PLATAFORMAS: platforms.map((p, i) => [
     p.id, p.name, p.slug, categoryLabel[p.category] ?? p.category, p.tagline ?? '', p.description ?? '',
     (p.features ?? []).join(' | '), p.field ?? p.color ?? '', p.ink ?? '', p.badge ?? '', i + 1, true,
   ]),
-  PLANES: platforms.flatMap((p) => p.plans.map((pl) => [p.id, pl.id, pl.label, pl.months, pl.price, true])),
+  PLANES: platforms.flatMap((p) => p.plans.map((pl) => [p.id, pl.id, pl.label, pl.months, pl.price, true, minPrice(pl.price)])),
   PACKS: packs.map((k) => [
-    k.id, k.name, k.price, k.period, k.description, k.platforms.join(', '), k.perks.join(' | '), !!k.highlight, true,
+    k.id, k.name, k.price, k.period, k.description, k.platforms.join(', '), k.perks.join(' | '), !!k.highlight, true, minPrice(k.price),
   ]),
   FAQ: faq.map((f, i) => [f.q, f.a, i + 1, true]),
 }

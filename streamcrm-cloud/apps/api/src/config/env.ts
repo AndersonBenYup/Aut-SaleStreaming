@@ -22,6 +22,9 @@ const schema = z.object({
   RETELL_FROM_NUMBER: z.string().default(''),
   WHATSAPP_VERIFY_TOKEN: z.string().default('streamcrm-verify'),
   WHATSAPP_APP_SECRET: z.string().default(''),
+  /** Vendedor por WhatsApp con IA (Claude). Sin clave, el bot no responde y se usa la interpretación por palabras. */
+  ANTHROPIC_API_KEY: z.string().default(''),
+  SALES_AGENT_MODEL: z.string().default('claude-haiku-5-5'),
   /** JSON de la service account (contenido completo o ruta a un archivo .json). */
   GOOGLE_SERVICE_ACCOUNT_JSON: z.string().default(''),
   SHEET_SCAN_CRON: z.string().default('*/15 * * * *'),

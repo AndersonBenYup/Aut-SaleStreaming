@@ -40,6 +40,11 @@ const publicSettings = (t: Tenant) => ({
   whatsappTemplate: t.whatsappTemplate,
   ownerNotifyPhone: t.ownerNotifyPhone,
   staffCanSeePasswords: t.staffCanSeePasswords,
+  salesAgentEnabled: t.salesAgentEnabled,
+  storeApiUrl: t.storeApiUrl,
+  hasStoreBotKey: !!t.storeBotKeyEnc,
+  salesToneGuide: t.salesToneGuide,
+  salesMaxDiscountRounds: t.salesMaxDiscountRounds,
 });
 
 function serviceAccountEmail(): string | null {
@@ -107,6 +112,11 @@ export function settingsRouter() {
       whatsappTemplate: input.whatsappTemplate,
       ownerNotifyPhone: phoneOrNull(input.ownerNotifyPhone),
       staffCanSeePasswords: input.staffCanSeePasswords,
+      salesAgentEnabled: input.salesAgentEnabled,
+      storeApiUrl: input.storeApiUrl,
+      storeBotKeyEnc: input.storeBotKey === undefined ? undefined : encrypt(input.storeBotKey || null),
+      salesToneGuide: input.salesToneGuide === undefined ? undefined : input.salesToneGuide?.trim() || null,
+      salesMaxDiscountRounds: input.salesMaxDiscountRounds,
       updatedAt: new Date(),
     };
     const [updated] = await getDb().update(tenants).set(values).where(eq(tenants.id, t.id)).returning();
@@ -130,7 +140,7 @@ export function settingsRouter() {
       tenantId: t.id,
       type: 'settings.updated',
       userId: req.auth!.user.id,
-      data: { fields: Object.keys(input).filter((k) => k !== 'whatsappToken' || input.whatsappToken !== undefined) },
+      data: { fields: Object.keys(input) },
     });
     res.json(publicSettings(updated!));
   });

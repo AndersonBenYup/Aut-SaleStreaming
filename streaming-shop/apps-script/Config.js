@@ -23,8 +23,8 @@ var CATALOG_TABS = [TABS.AJUSTES, TABS.PLATAFORMAS, TABS.PLANES, TABS.PACKS, TAB
 var HEADERS = {
   AJUSTES: ['CLAVE', 'VALOR', 'NOTA'],
   PLATAFORMAS: ['ID', 'NOMBRE', 'SLUG', 'CATEGORIA', 'LEMA', 'DESCRIPCION', 'CARACTERISTICAS', 'COLOR', 'COLOR TEXTO', 'INSIGNIA', 'ORDEN', 'ACTIVO'],
-  PLANES: ['PLATAFORMA', 'PLAN', 'ETIQUETA', 'MESES', 'PRECIO', 'ACTIVO'],
-  PACKS: ['ID', 'NOMBRE', 'PRECIO', 'PERIODO', 'DESCRIPCION', 'PLATAFORMAS', 'BENEFICIOS', 'DESTACADO', 'ACTIVO'],
+  PLANES: ['PLATAFORMA', 'PLAN', 'ETIQUETA', 'MESES', 'PRECIO', 'ACTIVO', 'PRECIO MINIMO'],
+  PACKS: ['ID', 'NOMBRE', 'PRECIO', 'PERIODO', 'DESCRIPCION', 'PLATAFORMAS', 'BENEFICIOS', 'DESTACADO', 'ACTIVO', 'PRECIO MINIMO'],
   FAQ: ['PREGUNTA', 'RESPUESTA', 'ORDEN', 'ACTIVO'],
   PEDIDOS: ['ID PEDIDO', 'FECHA', 'CLIENTE', 'TELEFONO', 'DETALLE', 'TOTAL', 'ESTADO', 'ACEPTA AVISOS', 'NOTAS', 'MENSAJE', 'ENLACE WHATSAPP', 'ITEMS'],
   // Compatible con StreamCRM (Local y Cloud): mismos nombres de columna.
@@ -44,10 +44,13 @@ var FIELDS = {
   PLANES: {
     platform: ['PLATAFORMA', 'ID PLATAFORMA'], id: ['PLAN', 'ID PLAN'], label: ['ETIQUETA', 'NOMBRE'],
     months: ['MESES'], price: ['PRECIO'], active: ['ACTIVO'],
+    // Lo mínimo que el vendedor por WhatsApp puede aceptar al regatear. Vacío = no hay rebaja. Nunca se publica en la web.
+    minPrice: ['PRECIO MINIMO', 'MINIMO', 'PRECIO MIN'],
   },
   PACKS: {
     id: ['ID'], name: ['NOMBRE'], price: ['PRECIO'], period: ['PERIODO'], description: ['DESCRIPCION'],
     platforms: ['PLATAFORMAS'], perks: ['BENEFICIOS'], highlight: ['DESTACADO'], active: ['ACTIVO'],
+    minPrice: ['PRECIO MINIMO', 'MINIMO', 'PRECIO MIN'],
   },
   FAQ: { q: ['PREGUNTA'], a: ['RESPUESTA'], order: ['ORDEN'], active: ['ACTIVO'] },
   PEDIDOS: {
@@ -92,6 +95,7 @@ var FIELDS = {
 /** Estados de un pedido (columna ESTADO de PEDIDOS). */
 var ORDER_STATUS = {
   NUEVO: 'Nuevo',
+  POR_VERIFICAR: 'Por verificar', // el cliente mandó su comprobante por WhatsApp: revisa y marca Pagado
   PAGADO: 'Pagado',
   LISTO: 'Listo para enviar',
   ENTREGADO: 'Entregado',
@@ -114,6 +118,7 @@ var SETTING_DEFAULTS = {
   'DIAS POR MES': '30',
   'CODIGO PAIS': '51',
   'PEDIDOS POR HORA POR TELEFONO': '5',
+  'INSTRUCCIONES DE PAGO': 'Yape o Plin al 999 999 999 a nombre de LokiStream',
 };
 
 /** Ajustes que se publican en la web, con el nombre que usa el sitio. */
@@ -133,8 +138,10 @@ var PUBLIC_SETTINGS = {
  * Claves secretas: van en Configuración del proyecto → Propiedades del script, NUNCA en la hoja.
  *   WHATSAPP_TOKEN     token permanente de WhatsApp Cloud API (opcional)
  *   WHATSAPP_PHONE_ID  id del número de WhatsApp Business (opcional)
+ *   BOT_API_KEY        clave compartida con el vendedor de WhatsApp (StreamCRM). Sin ella no hay precios mínimos ni rebajas.
  */
 var PROP = {
   WA_TOKEN: 'WHATSAPP_TOKEN',
   WA_PHONE_ID: 'WHATSAPP_PHONE_ID',
+  BOT_KEY: 'BOT_API_KEY',
 };

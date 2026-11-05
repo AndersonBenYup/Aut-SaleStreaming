@@ -7,10 +7,25 @@
 var ORDER_ID_RE = /^LK-[A-Z0-9]{4,10}$/;
 
 /**
+ * Precio acordado por el vendedor de WhatsApp: solo se acepta si viene con la clave del bot
+ * y queda entre el PRECIO MINIMO y el precio de lista. Sin precio acordado se cobra el de lista.
+ */
+function agreedPrice(item, list, min, trusted) {
+  if (!trusted || item.price === undefined || item.price === null || item.price === '') return { ok: true, price: list };
+  var p = toNumber(item.price);
+  if (p === null || isNaN(p)) return { ok: false, error: 'Precio acordado inválido' };
+  p = round2(p);
+  if (p < min || p > list) return { ok: false, error: 'Precio acordado fuera de rango' };
+  return { ok: true, price: p };
+}
+
+/**
  * Valida y cotiza un pedido. Devuelve { ok, error?, order? }.
+ * opts.trusted: viene del vendedor de WhatsApp (clave BOT_API_KEY) y puede traer un precio acordado por ítem.
  * order = { id, name, phone, consent, lines: [{ kind, platformId, platformName, planLabel, months, profiles, unitPrice, total, packId?, packName? }], total }
  */
-function priceOrder(payload, catalog, countryCode) {
+function priceOrder(payload, catalog, countryCode, opts) {
+  var trusted = !!(opts && opts.trusted);
   if (!payload || typeof payload !== 'object') return { ok: false, error: 'Pedido vacío' };
   if (payload.website) return { ok: false, error: 'spam' }; // campo trampa para bots
   var id = toText(payload.id).toUpperCase();
@@ -34,7 +49,9 @@ function priceOrder(payload, catalog, countryCode) {
     if (it.packId) {
       var pack = packsById[toText(it.packId)];
       if (!pack) return { ok: false, error: 'Pack desconocido: ' + it.packId };
-      lines.push({ kind: 'pack', packId: pack.id, packName: pack.name, total: pack.price, profiles: 1, months: 1, platforms: pack.platforms.slice() });
+      var packPrice = agreedPrice(it, pack.price, pack.minPrice === undefined ? pack.price : pack.minPrice, trusted);
+      if (!packPrice.ok) return packPrice;
+      lines.push({ kind: 'pack', packId: pack.id, packName: pack.name, total: packPrice.price, profiles: 1, months: 1, platforms: pack.platforms.slice() });
       continue;
     }
     var p = byId[toText(it.platformId).toLowerCase()];
@@ -43,6 +60,8 @@ function priceOrder(payload, catalog, countryCode) {
     if (!plan) return { ok: false, error: 'Plan desconocido para ' + p.name };
     var profiles = Math.round(toNumber(it.profiles) || 1);
     if (profiles < 1 || profiles > 6) return { ok: false, error: 'Perfiles fuera de rango (1 a 6)' };
+    var unit = agreedPrice(it, plan.price, plan.minPrice === undefined ? plan.price : plan.minPrice, trusted);
+    if (!unit.ok) return unit;
     lines.push({
       kind: 'platform',
       platformId: p.id,
@@ -51,8 +70,8 @@ function priceOrder(payload, catalog, countryCode) {
       planLabel: plan.label,
       months: plan.months,
       profiles: profiles,
-      unitPrice: plan.price,
-      total: round2(plan.price * profiles),
+      unitPrice: unit.price,
+      total: round2(unit.price * profiles),
     });
   }
   var total = round2(lines.reduce(function (s, l) { return s + l.total; }, 0));
@@ -89,4 +108,18 @@ function expandOrderLines(order, catalog) {
     }
   });
   return out;
+}
+
+/** Texto para NOTAS con lo que se leyó del comprobante y si el monto coincide con el TOTAL del pedido. */
+function paymentClaimSummary(claim, orderTotal) {
+  var amount = toNumber(claim.amount);
+  var amountText = amount === null
+    ? 'monto no legible'
+    : formatPEN(amount) + (orderTotal !== null && round2(amount) === round2(orderTotal) ? ' (coincide)' : ' (NO coincide con ' + formatPEN(orderTotal) + ')');
+  return [
+    'Comprobante ' + (toText(claim.method) || 'de pago'),
+    amountText,
+    claim.operation ? 'op. ' + toText(claim.operation).slice(0, 40) : '',
+    claim.payer ? 'de ' + toText(claim.payer).slice(0, 60) : '',
+  ].filter(Boolean).join(' · ');
 }

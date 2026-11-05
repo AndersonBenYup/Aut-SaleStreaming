@@ -7,6 +7,7 @@ import { normalizePhone } from '../lib/phone.js';
 import { enqueue } from '../jobs/queue.js';
 import { applyIntent, getTenant, logEvent } from './subscriptions.js';
 import { isRetryableDisconnection, retryOrFail } from './reminders.js';
+import { handleSalesMessage, salesAgentReady } from './sales-agent.js';
 
 /**
  * Guarda el evento (idempotente por source + externalId) y lo encola.
@@ -132,6 +133,10 @@ export interface WhatsappMessage {
   from: string;
   messageId: string;
   text: string;
+  /** Imagen adjunta (id de media de la Cloud API), p. ej. la captura del Yape. */
+  imageId?: string;
+  /** Nombre de perfil de WhatsApp del cliente. */
+  profileName?: string;
 }
 
 /** Extrae los mensajes de texto (o respuestas de botones) del payload de la Cloud API. */
@@ -140,10 +145,15 @@ export function extractWhatsappMessages(body: any): WhatsappMessage[] {
   for (const entry of body?.entry ?? []) {
     for (const change of entry?.changes ?? []) {
       const value = change?.value;
+      const profiles = new Map<string, string>(
+        (value?.contacts ?? []).map((c: any) => [String(c?.wa_id ?? ''), String(c?.profile?.name ?? '')]),
+      );
       for (const m of value?.messages ?? []) {
-        const text = m?.text?.body ?? m?.button?.text ?? m?.interactive?.button_reply?.title ?? '';
-        if (!text) continue;
-        out.push({ phoneNumberId: value?.metadata?.phone_number_id, from: m.from, messageId: m.id, text });
+        const imageId: string | undefined = m?.type === 'image' ? m?.image?.id : undefined;
+        const text = m?.text?.body ?? m?.button?.text ?? m?.interactive?.button_reply?.title ?? m?.image?.caption ?? '';
+        if (!text && !imageId) continue;
+        const profileName = profiles.get(String(m.from)) || undefined;
+        out.push({ phoneNumberId: value?.metadata?.phone_number_id, from: m.from, messageId: m.id, text, imageId, profileName });
       }
     }
   }
@@ -161,6 +171,12 @@ export function verifyWhatsappSignature(rawBody: Buffer, header: string | undefi
 async function processWhatsapp(db: Db, m: WhatsappMessage) {
   const [t] = await db.select().from(tenants).where(eq(tenants.whatsappPhoneNumberId, m.phoneNumberId));
   if (!t) return;
+  // Vendedor con IA: conversa, cierra ventas y renovaciones (también con números que aún no son clientes).
+  if (salesAgentReady(t)) {
+    await handleSalesMessage(t, m);
+    return;
+  }
+  if (!m.text) return;
   const phone = normalizePhone(m.from, t.country);
   if (!phone) return;
   const [customer] = await db

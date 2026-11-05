@@ -12,7 +12,8 @@ for (const f of ['Config.js', 'Util.js', 'Catalog.js', 'Orders.js', 'Fulfillment
 }
 const G = ctx
 
-const withHeader = (key, rows) => [G.HEADERS[key], ...rows]
+// Copia las filas: así una prueba que edita la tabla no afecta a las siguientes.
+const withHeader = (key, rows) => [G.HEADERS[key], ...rows.map((r) => [...r])]
 const seedTables = () => ({
   AJUSTES: withHeader('AJUSTES', G.SEED.AJUSTES),
   PLATAFORMAS: withHeader('PLATAFORMAS', G.SEED.PLATAFORMAS),
@@ -102,6 +103,45 @@ describe('pedidos', () => {
     const lines = G.expandOrderLines(r.order, catalog)
     expect(lines.map((l) => l.platformName)).toEqual(['Netflix', 'Disney+', 'Max'])
     expect(lines[0].unitPrice).toBeCloseTo(35 / 3, 2)
+  })
+})
+
+describe('regateo por WhatsApp (precio mínimo)', () => {
+  const catalog = G.buildCatalog(seedTables())
+  const base = { id: 'LK-WA12C', customer: { name: 'Luis Rojas', phone: '987654322' } }
+  const netflix = (price) => ({ ...base, items: [{ platformId: 'netflix', planId: '1m', profiles: 1, price }] })
+
+  it('lee PRECIO MINIMO de la hoja, pero nunca lo publica en la web', () => {
+    const plan = catalog.platforms.find((p) => p.id === 'netflix').plans.find((p) => p.id === '1m')
+    expect(plan.price).toBe(15)
+    expect(plan.minPrice).toBe(14)
+    const json = JSON.stringify(G.publicCatalog(catalog, 'x'))
+    expect(json).not.toContain('minPrice')
+    expect(catalog.platforms[0].plans[0].minPrice).toBeDefined() // el catálogo interno no se toca
+  })
+  it('acepta el precio acordado solo con la clave del bot y dentro del rango', () => {
+    expect(G.priceOrder(netflix(14), catalog, '51', { trusted: true }).order.total).toBe(14)
+    expect(G.priceOrder(netflix(13), catalog, '51', { trusted: true }).ok).toBe(false)
+    expect(G.priceOrder(netflix(16), catalog, '51', { trusted: true }).ok).toBe(false)
+    expect(G.priceOrder(netflix('abc'), catalog, '51', { trusted: true }).ok).toBe(false)
+    // Desde la web (sin clave) el precio enviado se ignora y se cobra el de lista.
+    expect(G.priceOrder(netflix(1), catalog, '51').order.total).toBe(15)
+    expect(G.priceOrder({ ...base, items: [{ packId: 'pack-total', price: 1 }] }, catalog, '51', { trusted: true }).ok).toBe(false)
+  })
+  it('sin PRECIO MINIMO no hay rebaja, y un mínimo mayor al precio se ignora con aviso', () => {
+    const t = seedTables()
+    t.PLANES = [G.HEADERS.PLANES, ['netflix', '1m', '1 mes', 1, 15, true, ''], ['netflix', '3m', '3 meses', 3, 40, true, 99]]
+    const c = G.buildCatalog(t)
+    const plans = c.platforms.find((p) => p.id === 'netflix').plans
+    expect(plans.map((p) => p.minPrice)).toEqual([15, 40])
+    expect(c.errors.some((e) => /PRECIO MINIMO/.test(e.error))).toBe(true)
+  })
+  it('resume el comprobante y avisa si el monto no coincide', () => {
+    expect(G.paymentClaimSummary({ method: 'Yape', amount: 14, operation: '00123', payer: 'Luis R.' }, 14)).toBe(
+      'Comprobante Yape · S/ 14.00 · (coincide) · op. 00123 · de Luis R.'.replace(' · (coincide)', ' (coincide)'),
+    )
+    expect(G.paymentClaimSummary({ amount: 10 }, 14)).toMatch(/NO coincide/)
+    expect(G.paymentClaimSummary({}, 14)).toMatch(/monto no legible/)
   })
 })
 

@@ -3,9 +3,8 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  border-radius: 1.75rem;
-  background: #030a07;
-  padding: clamp(32px, 6vw, 80px) clamp(20px, 5vw, 72px);
+  /* sin fondo propio: el texto queda sobre el fondo de la página, alineado con las demás secciones */
+  padding: clamp(32px, 6vw, 80px) 0;
 }
 
 /* Firma en runas: se encienden una tras otra al entrar y se quedan encendidas */

@@ -35,6 +35,7 @@ No hay servidor que mantener: todo corre en Google Apps Script, gratis, dentro d
 | Quiero… | Hago… |
 |---|---|
 | Cambiar un precio | Lo edito en **PLANES** (columna PRECIO). |
+| Fijar hasta dónde regatea el vendedor de WhatsApp | Columna **PRECIO MINIMO** de PLANES o PACKS. Vacía = no hay rebaja. Nunca se muestra en la web. |
 | Ocultar una plataforma o un plan | Desmarco **ACTIVO**. |
 | Agregar una plataforma nueva | Fila nueva en **PLATAFORMAS** (ID corto en minúsculas, NOMBRE, COLOR `#rrggbb`) y al menos un plan en **PLANES** con ese ID. Sin logo propio, la web muestra el nombre. |
 | Ver si algo está mal | Menú **LokiStream → Revisar catálogo**: lista las filas que no se publican y por qué. |
@@ -47,6 +48,7 @@ No hay servidor que mantener: todo corre en Google Apps Script, gratis, dentro d
 | Estado | Significa |
 |---|---|
 | **Nuevo** | Llegó desde la web. Espera el pago (el cliente te escribe por WhatsApp con su código). |
+| **Por verificar** | El cliente mandó su comprobante al vendedor de WhatsApp. En NOTAS está lo que se leyó (monto, operación, quién pagó y si el monto coincide). Revisa tu Yape y marca **Pagado**. |
 | **Pagado** | Lo pones tú. Dispara la entrega automática. |
 | **Listo para enviar** | Perfiles asignados y ventas creadas; falta mandar el mensaje (abre el ENLACE WHATSAPP). |
 | **Entregado** | Accesos enviados por WhatsApp Cloud API. |
@@ -78,11 +80,23 @@ Para que los accesos salgan solos necesitas WhatsApp Cloud API (Meta Business). 
 
 Las claves viven solo ahí: nunca en la hoja ni en la web. WhatsApp solo entrega texto libre si el cliente te escribió en las últimas 24 horas, que es lo normal porque el pedido entra por WhatsApp.
 
-## 4. Recordatorios con StreamCRM
+## 4. Vendedor por WhatsApp con IA (StreamCRM)
+
+StreamCRM puede atender tu WhatsApp con un vendedor que conversa como una persona, regatea dentro de tus límites, crea el pedido en **PEDIDOS** y deja el comprobante en **Por verificar**. La guía completa está en `streamcrm-cloud/docs/vendedor-whatsapp.md`. Lo que se configura en la hoja:
+
+1. En Apps Script → **Propiedades del script**, agrega `BOT_API_KEY` con una clave larga (32 caracteres o más). Es la misma que pegas en StreamCRM.
+2. Llena **PRECIO MINIMO** en PLANES y PACKS (los datos de ejemplo traen ≈10 % menos, máximo S/ 2).
+3. En AJUSTES, revisa **INSTRUCCIONES DE PAGO**: es lo que el vendedor le dice al cliente para pagar.
+
+Si tu hoja ya existía, agrega a mano las columnas **PRECIO MINIMO** en PLANES y PACKS y la fila **INSTRUCCIONES DE PAGO** en AJUSTES. La hoja reconoce las columnas por nombre, en cualquier posición.
+
+Sin la clave, el catálogo con mínimos no sale de la hoja y cualquier precio distinto al de lista se ignora.
+
+## 5. Recordatorios con StreamCRM
 
 VENTAS tiene las columnas que lee StreamCRM: CORREO, CONTRASEÑA, CLIENTE, TELEFONO, SERVICIO, PERFIL, PIN, FECHA INICIO, DIAS, FECHA DE VENCIMIENTO, V U, V V, ACEPTA LLAMADAS, INTENCION, RECORDATORIO, ULTIMO CONTACTO y RESUMEN LLAMADA. Conecta tu StreamCRM a esta hoja y seguirá avisando antes de cada vencimiento. Solo usa un motor de recordatorios a la vez, para no avisar dos veces al mismo cliente.
 
-## 5. Probar sin Google
+## 6. Probar sin Google
 
 ```bash
 npm run hoja:mock                                   # hoja simulada en http://localhost:8787/exec
@@ -94,8 +108,9 @@ El simulador usa la misma lógica que Apps Script. Para ver que la web cambia so
 `http://localhost:8787/exec?action=precio&plataforma=netflix&plan=1m&valor=19`.
 Los pedidos recibidos se ven en `http://localhost:8787/exec?action=pedidos`.
 
-## 6. Seguridad
+## 7. Seguridad
 
 - La web solo conoce la URL pública. Los pedidos traen *qué* se pide; el precio lo calcula la hoja.
 - Hay un campo trampa contra bots, un límite de pedidos por teléfono por hora (`PEDIDOS POR HORA POR TELEFONO` en AJUSTES) y los pedidos repetidos con el mismo código se ignoran.
-- Un pedido **Nuevo** no entrega nada hasta que tú lo marcas **Pagado**.
+- Un pedido **Nuevo** o **Por verificar** no entrega nada hasta que tú lo marcas **Pagado**.
+- Solo el vendedor de WhatsApp (con `BOT_API_KEY`) puede mandar un precio acordado, y la hoja lo rechaza si baja del PRECIO MINIMO.

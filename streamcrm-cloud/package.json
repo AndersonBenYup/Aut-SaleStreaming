@@ -17,7 +17,8 @@
     "db:migrate": "npm run db:migrate -w @streamcrm/api",
     "seed": "npm run seed -w @streamcrm/api",
     "create-superadmin": "npm run create-superadmin -w @streamcrm/api",
-    "demo:sheet": "npm run demo:sheet -w @streamcrm/api"
+    "demo:sheet": "npm run demo:sheet -w @streamcrm/api",
+    "vendedor:chat": "npm run vendedor:chat -w @streamcrm/api"
   },
   "engines": {
     "node": ">=22"

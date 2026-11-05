@@ -11,9 +11,11 @@
     "db:migrate": "tsx src/scripts/migrate.ts",
     "seed": "tsx src/scripts/seed.ts",
     "create-superadmin": "tsx src/scripts/create-superadmin.ts",
-    "demo:sheet": "tsx src/scripts/generate-demo-sheet.ts"
+    "demo:sheet": "tsx src/scripts/generate-demo-sheet.ts",
+    "vendedor:chat": "tsx src/scripts/chat-vendedor.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.4.0",
     "@streamcrm/shared": "^0.1.0",
     "argon2": "^0.45.1",
     "cookie-parser": "^1.4.7",
