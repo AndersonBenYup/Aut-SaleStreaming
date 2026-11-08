@@ -22,6 +22,7 @@ import { normalizePhone } from '../lib/phone.js';
 import { downloadWhatsappImage, sendWhatsappText, type WhatsappCredentials } from '../channels/whatsapp.js';
 import { formatPrice, negotiate, round2 } from './negotiation.js';
 import { buildSystemPrompt, moneyAmounts } from './sales-prompt.js';
+import { getOpenRouterClient } from './openrouter-client.js';
 import {
   createStoreOrder,
   getStoreCatalog,
@@ -40,6 +41,10 @@ const THREAD_MAX_MESSAGES = 80; // hilo largo → se empieza uno nuevo (no se re
 const OFFER_TTL_MS = 24 * 3600_000;
 const HANDOFF_PAUSE_MS = 12 * 3600_000;
 const MAX_STEPS = 6;
+/** Una respuesta normal de WhatsApp (1 a 3 líneas) nunca llega a esto. Por encima, algunos modelos gratis
+ * de OpenRouter filtran su razonamiento interno dentro del texto en vez de mandarlo aparte: se trata igual
+ * que un precio inventado (se le pide corregir, y si insiste, pasa a una persona). */
+const MAX_REPLY_CHARS = 900;
 
 export const FALLBACK_REPLY = 'Dame un toque, confirmo eso y te escribo al toque 🙌';
 
@@ -54,7 +59,12 @@ export const setClaudeClient = (c: ClaudeClient | null | undefined) => {
 };
 function getClaude(): ClaudeClient | null {
   if (claude !== undefined) return claude;
-  const key = env().ANTHROPIC_API_KEY;
+  const e = env();
+  if (e.SALES_AGENT_PROVIDER === 'openrouter') {
+    claude = getOpenRouterClient();
+    return claude;
+  }
+  const key = e.ANTHROPIC_API_KEY;
   claude = key ? (new Anthropic({ apiKey: key, maxRetries: 2, timeout: 60_000 }) as unknown as ClaudeClient) : null;
   return claude;
 }
@@ -227,21 +237,31 @@ async function runTurn(db: Db, t: Tenant, phone: string, m: IncomingMessage, now
       .join('\n')
       .trim();
     const unknown = moneyAmounts(text).filter((a) => !allowedAmounts(catalog, messages).has(a));
-    if (unknown.length && !corrected) {
+    const tooLong = text.length > MAX_REPLY_CHARS;
+    if ((unknown.length || tooLong) && !corrected) {
       corrected = true;
       messages.push({
         role: 'user',
         content: [
           {
             type: 'text',
-            text: `[Sistema] Tu respuesta menciona ${unknown.map(formatPrice).join(', ')}, que no es un precio del catálogo ni de las herramientas. Reescríbela usando solo esos precios (para una rebaja, usa cotizar_rebaja).`,
+            text: tooLong
+              ? '[Sistema] Tu respuesta es demasiado larga y parece traer razonamiento interno en vez del mensaje final. Reescríbela: solo el mensaje corto (1 a 3 líneas) que le mandarías al cliente, sin explicar tu proceso.'
+              : `[Sistema] Tu respuesta menciona ${unknown.map(formatPrice).join(', ')}, que no es un precio del catálogo ni de las herramientas. Reescríbela usando solo esos precios (para una rebaja, usa cotizar_rebaja).`,
           },
         ],
       });
       continue;
     }
-    if (unknown.length || !text) {
-      await handoff(ctx, unknown.length ? `Precio no autorizado en la respuesta: ${unknown.join(', ')}` : 'Respuesta vacía');
+    if (unknown.length || tooLong || !text) {
+      await handoff(
+        ctx,
+        tooLong
+          ? `Respuesta demasiado larga (${text.length} caracteres), posible fuga de razonamiento del modelo`
+          : unknown.length
+            ? `Precio no autorizado en la respuesta: ${unknown.join(', ')}`
+            : 'Respuesta vacía',
+      );
       reply = FALLBACK_REPLY;
       break;
     }

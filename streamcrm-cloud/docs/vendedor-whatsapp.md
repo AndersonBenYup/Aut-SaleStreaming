@@ -21,6 +21,26 @@ No se entrena ningún modelo. El tono sale de un "manual del vendedor" que escri
 
 Para probar cuánto cuesta tu propio tono, usa `/costo` en el chat de prueba (abajo). Si quieres más calidad, `SALES_AGENT_MODEL=claude-sonnet-5-5` cuesta unas 20 veces más.
 
+### Probar gratis con OpenRouter (sin tarjeta)
+
+Si todavía no tienes una API key de Anthropic (tu suscripción de Claude.ai no sirve para esto, es un producto aparte), puedes probar el vendedor con modelos gratis de [OpenRouter](https://openrouter.ai/settings/keys):
+
+```
+SALES_AGENT_PROVIDER=openrouter
+OPENROUTER_API_KEY=sk-or-...
+SALES_AGENT_MODEL=openrouter/free
+```
+
+`openrouter/free` es un "router" que elige automáticamente, en cada llamada, un modelo gratis que soporte herramientas e imágenes. También puedes fijar un modelo concreto, por ejemplo `nvidia/nemotron-3-ultra-550b-a55b:free` o `nvidia/nemotron-3.5-lightning:free`.
+
+Para esto no cambias nada más: el mismo prompt, las mismas herramientas y las mismas reglas de precio (sección siguiente) siguen aplicando igual.
+
+Limitaciones a tener en cuenta, solo mientras pruebas:
+- La capa gratis deja 20 peticiones por minuto y 50 por día (sube a 1000/día después de haber comprado US$10 en algún momento, aunque sea una sola vez).
+- Con `openrouter/free` el modelo que contesta puede cambiar de una conversación a otra, así que la calidad y el tono varían más que con Claude.
+- No hay caché de prompt (no aplica igual que en Anthropic), así que `/costo` siempre muestra gratis, sin ahorro que medir.
+- No pensado para atender clientes reales a diario: es para probar el flujo hasta que tengas presupuesto para una key de pago (Anthropic u otro modelo de OpenRouter).
+
 ## Cómo se protege el precio
 
 1. **La IA no decide rebajas.** La herramienta `cotizar_rebaja` aplica `negotiate()` (`apps/api/src/modules/negotiation.ts`):
@@ -60,7 +80,7 @@ Responde que es el asistente virtual de la tienda y ofrece pasar con una persona
    - agrega `BOT_API_KEY` en las Propiedades del script;
    - llena **PRECIO MINIMO** en PLANES y PACKS;
    - revisa **INSTRUCCIONES DE PAGO** en AJUSTES.
-2. **En el `.env` de StreamCRM:** `ANTHROPIC_API_KEY=sk-ant-…`. Puedes dejar el modelo por defecto `claude-haiku-5-5`.
+2. **En el `.env` de StreamCRM:** `ANTHROPIC_API_KEY=sk-ant-…`. Puedes dejar el modelo por defecto `claude-haiku-5-5`. (¿Sin API key de Anthropic todavía? Usa la ruta gratis de OpenRouter: ver "Probar gratis con OpenRouter" arriba.)
 3. **En Meta:** apunta el webhook de tu app de WhatsApp a `https://TU-DOMINIO/webhooks/whatsapp`, con el token de verificación `WHATSAPP_VERIFY_TOKEN`, y suscríbete a `messages`. El servidor tiene que estar publicado y siempre encendido, porque Apps Script no puede recibir este webhook.
 4. **En los Ajustes del negocio** (`PATCH /api/settings`):
 

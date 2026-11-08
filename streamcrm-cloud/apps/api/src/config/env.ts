@@ -24,6 +24,12 @@ const schema = z.object({
   WHATSAPP_APP_SECRET: z.string().default(''),
   /** Vendedor por WhatsApp con IA (Claude). Sin clave, el bot no responde y se usa la interpretación por palabras. */
   ANTHROPIC_API_KEY: z.string().default(''),
+  /**
+   * 'openrouter' usa modelos gratis de OpenRouter (para probar sin gastar) con el mismo vendedor;
+   * requiere OPENROUTER_API_KEY y un SALES_AGENT_MODEL de OpenRouter (p. ej. openrouter/free).
+   */
+  SALES_AGENT_PROVIDER: z.enum(['anthropic', 'openrouter']).default('anthropic'),
+  OPENROUTER_API_KEY: z.string().default(''),
   SALES_AGENT_MODEL: z.string().default('claude-haiku-5-5'),
   /** JSON de la service account (contenido completo o ruta a un archivo .json). */
   GOOGLE_SERVICE_ACCOUNT_JSON: z.string().default(''),

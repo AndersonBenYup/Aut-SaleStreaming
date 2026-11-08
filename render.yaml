@@ -1,0 +1,53 @@
+databases:
+  - name: streamcrm-db
+    plan: free
+    databaseName: streamcrm
+    user: streamcrm
+
+services:
+  - type: web
+    name: streamcrm-cloud-api
+    runtime: node
+    rootDir: streamcrm-cloud
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build -w @streamcrm/shared && npm run build -w @streamcrm/web && npm run build -w @streamcrm/api
+    startCommand: npm run start -w @streamcrm/api
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: streamcrm-db
+          property: connectionString
+      # Generar con: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: SALES_AGENT_PROVIDER
+        value: anthropic
+      - key: SALES_AGENT_MODEL
+        value: claude-haiku-5-5
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      # Debe coincidir con el token que pones en Meta al suscribir el webhook.
+      - key: WHATSAPP_VERIFY_TOKEN
+        value: streamcrm-verify
+      - key: WHATSAPP_APP_SECRET
+        sync: false
+      # Contenido JSON completo de la service account de Google (no una ruta, aquí no hay archivo).
+      - key: GOOGLE_SERVICE_ACCOUNT_JSON
+        sync: false
+      - key: RETELL_API_KEY
+        sync: false
+      - key: RETELL_AGENT_ID
+        sync: false
+      - key: RETELL_FROM_NUMBER
+        sync: false
+      - key: REMINDER_CHANNEL_OVERRIDE
+        value: console
+      - key: DEV_ALLOWED_NUMBERS
+        sync: false

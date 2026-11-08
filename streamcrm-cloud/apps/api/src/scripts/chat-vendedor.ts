@@ -2,6 +2,8 @@
  * Prueba el vendedor por WhatsApp desde la terminal, sin WhatsApp ni Meta.
  *   1. En streaming-shop:  npm run hoja:mock          (tienda simulada en http://localhost:8787/exec)
  *   2. En .env:            ANTHROPIC_API_KEY=sk-ant-…
+ *                           o, para probar gratis: SALES_AGENT_PROVIDER=openrouter, OPENROUTER_API_KEY=sk-or-…,
+ *                           SALES_AGENT_MODEL=openrouter/free
  *   3. Aquí:               npm run vendedor:chat
  * Escribe como si fueras el cliente. Comandos: /imagen (simula que mandas una captura de Yape),
  * /nuevo (empieza otra conversación), /costo, /salir.
@@ -26,8 +28,10 @@ const PRICES: Record<string, { in: number; out: number; cacheRead: number }> = {
 };
 
 async function main() {
-  if (!env().ANTHROPIC_API_KEY) {
-    console.error('Falta ANTHROPIC_API_KEY en el .env de la raíz de streamcrm-cloud.');
+  const provider = env().SALES_AGENT_PROVIDER;
+  if (provider === 'openrouter' ? !env().OPENROUTER_API_KEY : !env().ANTHROPIC_API_KEY) {
+    const falta = provider === 'openrouter' ? 'OPENROUTER_API_KEY' : 'ANTHROPIC_API_KEY';
+    console.error(`Falta ${falta} en el .env de la raíz de streamcrm-cloud (SALES_AGENT_PROVIDER=${provider}).`);
     process.exit(1);
   }
   const db = await bootDatabase();
@@ -56,7 +60,7 @@ async function main() {
     data: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
   }));
 
-  console.log(`Modelo: ${env().SALES_AGENT_MODEL} · tienda: ${values.storeApiUrl}\nEscribe como cliente. /imagen · /nuevo · /costo · /salir\n`);
+  console.log(`Proveedor: ${provider} · modelo: ${env().SALES_AGENT_MODEL} · tienda: ${values.storeApiUrl}\nEscribe como cliente. /imagen · /nuevo · /costo · /salir\n`);
   const rl = readline.createInterface({ input, output });
   let n = 0;
   try {
@@ -71,10 +75,14 @@ async function main() {
       }
       if (line === '/costo') {
         const rows = await getDb().select().from(chatThreads).where(eq(chatThreads.tenantId, t!.id));
-        const p = PRICES[env().SALES_AGENT_MODEL] ?? PRICES['claude-haiku-5-5']!;
         const tot = rows.reduce((s, r) => ({ i: s.i + r.inputTokens, o: s.o + r.outputTokens, c: s.c + r.cacheReadTokens }), { i: 0, o: 0, c: 0 });
-        const usd = (tot.i * p.in + tot.o * p.out + tot.c * p.cacheRead) / 1e6;
-        console.log(`   tokens: ${tot.i} entrada · ${tot.c} desde caché · ${tot.o} salida ≈ US$ ${usd.toFixed(4)} (sin contar la escritura de caché)`);
+        if (provider === 'openrouter') {
+          console.log(`   tokens: ${tot.i} entrada · ${tot.o} salida ≈ US$ 0.0000 (modelo gratis de OpenRouter)`);
+        } else {
+          const p = PRICES[env().SALES_AGENT_MODEL] ?? PRICES['claude-haiku-5-5']!;
+          const usd = (tot.i * p.in + tot.o * p.out + tot.c * p.cacheRead) / 1e6;
+          console.log(`   tokens: ${tot.i} entrada · ${tot.c} desde caché · ${tot.o} salida ≈ US$ ${usd.toFixed(4)} (sin contar la escritura de caché)`);
+        }
         continue;
       }
       const isImage = line.startsWith('/imagen');

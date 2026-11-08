@@ -14,7 +14,7 @@ No hay servidor que mantener: todo corre en Google Apps Script, gratis, dentro d
 ## 1. Crear la hoja (10 minutos, una sola vez)
 
 1. En la carpeta del proyecto ejecuta `npm run hoja:bundle`. Se genera **`apps-script/dist/LokiStream.gs`**.
-2. Crea una hoja nueva en <https://sheets.new> y ponle nombre, por ejemplo *LokiStream*.
+2. Crea una hoja nueva en [https://sheets.new](https://sheets.new) y ponle nombre, por ejemplo *LokiStream*.
 3. Menú **Extensiones → Apps Script**. Borra lo que haya en `Código.gs` y pega **todo** el contenido de `LokiStream.gs`. Guarda (Ctrl + S).
 4. En la lista de funciones de arriba elige **`instalarLokiStream`** y pulsa **Ejecutar**. Google te pedirá permisos: *Revisar permisos → tu cuenta → Configuración avanzada → Ir a LokiStream → Permitir*.
    Se crean las pestañas AJUSTES, PLATAFORMAS, PLANES, PACKS, FAQ (con el catálogo actual de la web), PEDIDOS, VENTAS, CUENTAS y LOG.
@@ -26,34 +26,35 @@ No hay servidor que mantener: todo corre en Google Apps Script, gratis, dentro d
    ```
    VITE_SHEETS_API_URL=https://script.google.com/macros/s/XXXXXXXX/exec
    ```
+
    y vuelve a publicar (`npm run build`).
 
 > Si cambias el código del script, usa **Implementar → Administrar implementaciones → ✏ → Versión: nueva**. Así la URL no cambia.
 
 ## 2. Uso diario
 
-| Quiero… | Hago… |
-|---|---|
-| Cambiar un precio | Lo edito en **PLANES** (columna PRECIO). |
-| Fijar hasta dónde regatea el vendedor de WhatsApp | Columna **PRECIO MINIMO** de PLANES o PACKS. Vacía = no hay rebaja. Nunca se muestra en la web. |
-| Ocultar una plataforma o un plan | Desmarco **ACTIVO**. |
-| Agregar una plataforma nueva | Fila nueva en **PLATAFORMAS** (ID corto en minúsculas, NOMBRE, COLOR `#rrggbb`) y al menos un plan en **PLANES** con ese ID. Sin logo propio, la web muestra el nombre. |
-| Ver si algo está mal | Menú **LokiStream → Revisar catálogo**: lista las filas que no se publican y por qué. |
-| Entregar un pedido | Cuando el cliente pague, cambio **ESTADO** a **Pagado**. |
-| Reenviar los accesos | Abro el **ENLACE WHATSAPP** de la fila del pedido. |
-| Reprocesar un pedido | Selecciono la fila → **LokiStream → Procesar pedido de la fila seleccionada**. |
+| Quiero…                                           | Hago…                                                                                                                                                                                 |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cambiar un precio                                  | Lo edito en **PLANES** (columna PRECIO).                                                                                                                                         |
+| Fijar hasta dónde regatea el vendedor de WhatsApp | Columna **PRECIO MINIMO** de PLANES o PACKS. Vacía = no hay rebaja. Nunca se muestra en la web.                                                                                 |
+| Ocultar una plataforma o un plan                   | Desmarco **ACTIVO**.                                                                                                                                                             |
+| Agregar una plataforma nueva                       | Fila nueva en **PLATAFORMAS** (ID corto en minúsculas, NOMBRE, COLOR `#rrggbb`) y al menos un plan en **PLANES** con ese ID. Sin logo propio, la web muestra el nombre. |
+| Ver si algo está mal                              | Menú **LokiStream → Revisar catálogo**: lista las filas que no se publican y por qué.                                                                                        |
+| Entregar un pedido                                 | Cuando el cliente pague, cambio **ESTADO** a **Pagado**.                                                                                                                   |
+| Reenviar los accesos                               | Abro el **ENLACE WHATSAPP** de la fila del pedido.                                                                                                                               |
+| Reprocesar un pedido                               | Selecciono la fila → **LokiStream → Procesar pedido de la fila seleccionada**.                                                                                                 |
 
 ### Estados de un pedido
 
-| Estado | Significa |
-|---|---|
-| **Nuevo** | Llegó desde la web. Espera el pago (el cliente te escribe por WhatsApp con su código). |
-| **Por verificar** | El cliente mandó su comprobante al vendedor de WhatsApp. En NOTAS está lo que se leyó (monto, operación, quién pagó y si el monto coincide). Revisa tu Yape y marca **Pagado**. |
-| **Pagado** | Lo pones tú. Dispara la entrega automática. |
-| **Listo para enviar** | Perfiles asignados y ventas creadas; falta mandar el mensaje (abre el ENLACE WHATSAPP). |
-| **Entregado** | Accesos enviados por WhatsApp Cloud API. |
-| **Sin stock** | No hay perfiles libres suficientes. Agrega cuentas en CUENTAS y vuelve a poner **Pagado**. No se crea nada a medias. |
-| **Error** | Mira NOTAS y la pestaña LOG. |
+| Estado                      | Significa                                                                                                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nuevo**             | Llegó desde la web. Espera el pago (el cliente te escribe por WhatsApp con su código).                                                                                                    |
+| **Por verificar**     | El cliente mandó su comprobante al vendedor de WhatsApp. En NOTAS está lo que se leyó (monto, operación, quién pagó y si el monto coincide). Revisa tu Yape y marca **Pagado**. |
+| **Pagado**            | Lo pones tú. Dispara la entrega automática.                                                                                                                                               |
+| **Listo para enviar** | Perfiles asignados y ventas creadas; falta mandar el mensaje (abre el ENLACE WHATSAPP).                                                                                                     |
+| **Entregado**         | Accesos enviados por WhatsApp Cloud API.                                                                                                                                                    |
+| **Sin stock**         | No hay perfiles libres suficientes. Agrega cuentas en CUENTAS y vuelve a poner **Pagado**. No se crea nada a medias.                                                                  |
+| **Error**             | Mira NOTAS y la pestaña LOG.                                                                                                                                                               |
 
 ### CUENTAS: de dónde salen los perfiles
 
@@ -73,10 +74,10 @@ Sin configurarlo, todo funciona: el pedido queda **Listo para enviar** con el me
 
 Para que los accesos salgan solos necesitas WhatsApp Cloud API (Meta Business). En Apps Script: **Configuración del proyecto → Propiedades del script → Agregar**:
 
-| Propiedad | Valor |
-|---|---|
-| `WHATSAPP_TOKEN` | token permanente del usuario del sistema |
-| `WHATSAPP_PHONE_ID` | ID del número de teléfono |
+| Propiedad             | Valor                                    |
+| --------------------- | ---------------------------------------- |
+| `WHATSAPP_TOKEN`    | token permanente del usuario del sistema |
+| `WHATSAPP_PHONE_ID` | ID del número de teléfono              |
 
 Las claves viven solo ahí: nunca en la hoja ni en la web. WhatsApp solo entrega texto libre si el cliente te escribió en las últimas 24 horas, que es lo normal porque el pedido entra por WhatsApp.
 
