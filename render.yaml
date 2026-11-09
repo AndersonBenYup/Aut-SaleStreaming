@@ -26,9 +26,9 @@ services:
       - key: ENCRYPTION_KEY
         sync: false
       - key: SALES_AGENT_PROVIDER
-        value: anthropic
+        value: openrouter
       - key: SALES_AGENT_MODEL
-        value: claude-haiku-5-5
+        value: openrouter/free
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: OPENROUTER_API_KEY
