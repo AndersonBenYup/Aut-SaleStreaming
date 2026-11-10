@@ -1,9 +1,3 @@
-databases:
-  - name: streamcrm-db
-    plan: free
-    databaseName: streamcrm
-    user: streamcrm
-
 services:
   - type: web
     name: streamcrm-cloud-api
@@ -18,10 +12,9 @@ services:
         value: "22"
       - key: NODE_ENV
         value: production
+      # Supabase → Connect → Session pooler (IPv4). La conexión directa db.*.supabase.co es solo IPv6 y Render no la alcanza.
       - key: DATABASE_URL
-        fromDatabase:
-          name: streamcrm-db
-          property: connectionString
+        sync: false
       # Generar con: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
       - key: ENCRYPTION_KEY
         sync: false

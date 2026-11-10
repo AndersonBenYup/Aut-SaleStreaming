@@ -1,5 +1,6 @@
 import { PgBoss } from 'pg-boss';
 import { logger } from '../lib/logger.js';
+import { pgSsl } from '../db/index.js';
 
 export type JobHandler<T = unknown> = (data: T) => Promise<void>;
 
@@ -37,7 +38,7 @@ export async function enqueue<T extends object>(name: string, data: T, opts: Sen
 }
 
 export async function startQueue(databaseUrl: string, schedules: { name: string; cron: string }[]) {
-  boss = new PgBoss({ connectionString: databaseUrl });
+  boss = new PgBoss({ connectionString: databaseUrl, max: 3, ssl: pgSsl(databaseUrl) });
   boss.on('error', (err) => logger.error({ err }, 'pg-boss'));
   await boss.start();
   for (const name of handlers.keys()) {

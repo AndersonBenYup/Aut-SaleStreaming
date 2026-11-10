@@ -10,8 +10,15 @@ export type Db = NodePgDatabase<typeof schema>;
 let pool: pg.Pool | undefined;
 let db: Db | undefined;
 
+/** Postgres gestionado (Supabase, Render) exige SSL; su CA no está en el almacén de Node, así que no se verifica. */
+export function pgSsl(databaseUrl: string): pg.PoolConfig['ssl'] {
+  const host = new URL(databaseUrl).hostname;
+  return host === 'localhost' || host === '127.0.0.1' ? undefined : { rejectUnauthorized: false };
+}
+
 export function connect(databaseUrl: string): Db {
-  pool = new pg.Pool({ connectionString: databaseUrl, max: 10 });
+  // Pool chico: el pooler de Supabase (modo sesión) en plan free admite pocas conexiones y pg-boss usa las suyas.
+  pool = new pg.Pool({ connectionString: databaseUrl, max: 5, ssl: pgSsl(databaseUrl) });
   db = drizzle(pool, { schema });
   return db;
 }
