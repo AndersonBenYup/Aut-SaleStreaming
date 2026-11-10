@@ -9,6 +9,7 @@ import { logger } from './lib/logger.js';
 const db = await bootDatabase();
 registerJobs();
 await startQueue(db.url, schedules());
+logger.info('Cola de trabajos (pg-boss) iniciada');
 
 const server = createApp().listen(env().PORT, () => {
   logger.info(`StreamCRM API en ${env().PUBLIC_URL} (puerto ${env().PORT})`);

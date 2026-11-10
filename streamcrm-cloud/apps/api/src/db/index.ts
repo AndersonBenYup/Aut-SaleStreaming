@@ -18,7 +18,7 @@ export function pgSsl(databaseUrl: string): pg.PoolConfig['ssl'] {
 
 export function connect(databaseUrl: string): Db {
   // Pool chico: el pooler de Supabase (modo sesión) en plan free admite pocas conexiones y pg-boss usa las suyas.
-  pool = new pg.Pool({ connectionString: databaseUrl, max: 5, ssl: pgSsl(databaseUrl) });
+  pool = new pg.Pool({ connectionString: databaseUrl, max: 5, ssl: pgSsl(databaseUrl), connectionTimeoutMillis: 20_000 });
   db = drizzle(pool, { schema });
   return db;
 }

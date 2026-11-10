@@ -19,8 +19,11 @@ export async function bootDatabase() {
     stopEmbedded = pg.stop;
     logger.info('Postgres embebido en el puerto 54320 (datos en apps/api/.pgdata)');
   }
+  const target = new URL(url);
+  logger.info(`Conectando a Postgres en ${target.hostname}:${target.port || 5432} (usuario ${decodeURIComponent(target.username)})`);
   connect(url);
   await runMigrations();
+  logger.info('Base de datos lista (migraciones aplicadas)');
   return {
     url,
     async close() {
